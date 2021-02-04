@@ -1,0 +1,44 @@
+\begin{thebibliography}{}
+
+\bibitem[Barczy and Kern, 2013]{Barczy2013Sample}
+Barczy, M. and Kern, P. (2013).
+\newblock Sample path deviations of the wiener and the ornstein-uhlenbeck
+  process from its bridges.
+\newblock {\em Brazilian Journal of Probability and Statistics},
+  27(4):437--466.
+
+\bibitem[Cox and Peskir, 2015]{cox_embedding_2015}
+Cox, A. M.~G. and Peskir, G. (2015).
+\newblock Embedding laws in diffusions by functions of time.
+\newblock {\em The Annals of Probability}, 43(5):2481--2510.
+
+\bibitem[D’Auria et~al., 2020]{d2020discounted}
+D’Auria, B., Garc{\'\i}a-Portugu{\'e}s, E., and Guada, A. (2020).
+\newblock Discounted optimal stopping of a brownian bridge, with application to
+  american options under pinning.
+\newblock {\em Mathematics}, 8(7):1159.
+
+\bibitem[Friedman, 1964]{friedman1964partial}
+Friedman, A. (1964).
+\newblock {\em Partial differential equations of parabolic type}.
+\newblock Prentice-Hall.
+
+\bibitem[Ikeda and Watanabe, 1977]{ikeda1977}
+Ikeda, N. and Watanabe, S. (1977).
+\newblock A comparison theorem for solutions of stochastic differential
+  equations and its applications.
+\newblock {\em Osaka Journal of Mathematics}, 14(3):619--633.
+
+\bibitem[Peskir and Shiryaev, 2006]{goran-optimal}
+Peskir, G. and Shiryaev, A. (2006).
+\newblock {\em Optimal Stopping and Free-Boundary Problems}.
+\newblock Lectures in Mathematics. ETH Zürich. Birkhäuser, Basel,
+  Switzerland.
+
+\bibitem[Revuz and Yor, 1999]{revuz_continuous_1999}
+Revuz, D. and Yor, M. (1999).
+\newblock {\em Continuous {Martingales} and {Brownian} {Motion}}.
+\newblock Grundlehren der mathematischen {Wissenschaften}. Springer-Verlag,
+  Berlin Heidelberg, 3 edition.
+
+\end{thebibliography}
