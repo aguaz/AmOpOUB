@@ -41,4 +41,9 @@ Revuz, D. and Yor, M. (1999).
 \newblock Grundlehren der mathematischen {Wissenschaften}. Springer-Verlag,
   Berlin Heidelberg, 3 edition.
 
+\bibitem[Schilling et~al., 2012]{schilling2012brownian}
+Schilling, R., Partzsch, L., and B{\"o}ttcher, B. (2012).
+\newblock {\em Brownian Motion: An Introduction to Stochastic Processes}.
+\newblock De Gruyter.
+
 \end{thebibliography}

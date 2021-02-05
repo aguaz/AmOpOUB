@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2020.6.16)  4 FEB 2021 15:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2020.6.16)  5 FEB 2021 16:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1002,33 +1002,59 @@ Overfull \hbox (17.8813pt too wide) detected at line 274
 []
  []
 
-[6] [7]
-Overfull \hbox (48.25221pt too wide) detected at line 321
+[6] [7] [8]
+Overfull \hbox (30.42818pt too wide) detected at line 366
 []
  []
 
 
-Overfull \hbox (4.03995pt too wide) detected at line 329
-[]
- []
-
-[8]
-Overfull \hbox (22.75214pt too wide) detected at line 343
+Overfull \hbox (216.1007pt too wide) detected at line 382
 []
  []
 
 
-Overfull \hbox (89.78835pt too wide) detected at line 347
-[]
- []
-
-
-Overfull \hbox (123.58662pt too wide) detected at line 353
+Overfull \hbox (121.49341pt too wide) detected at line 396
 []
  []
 
 [9]
-Overfull \hbox (25.16962pt too wide) in paragraph at lines 374--376
+Overfull \hbox (171.76857pt too wide) detected at line 402
+[]
+ []
+
+
+Overfull \hbox (179.49458pt too wide) detected at line 409
+[]
+ []
+
+[10]
+Overfull \hbox (5.63982pt too wide) detected at line 433
+[]
+ []
+
+[11]
+Overfull \hbox (5.3497pt too wide) in paragraph at lines 465--467
+\T1/pplj/m/n/10 From some pos-i-tive con-stant $\OML/zplm/m/it/10 K[]$ \T1/pplj
+/m/n/10 com-ing af-ter ap-ply-ing the Burkholder- 
+ []
+
+[12]
+Overfull \hbox (22.75214pt too wide) detected at line 509
+[]
+ []
+
+
+Overfull \hbox (89.78835pt too wide) detected at line 513
+[]
+ []
+
+
+Overfull \hbox (123.58662pt too wide) detected at line 519
+[]
+ []
+
+[13]
+Overfull \hbox (25.16962pt too wide) in paragraph at lines 540--542
 []\T1/pplj/m/n/10 Finally, the smooth fit con-di-tion comes af-ter re-al-iz-ing
  that $\OML/zplm/m/it/10 @[]V\OT1/zplm/m/n/10 (\OML/zplm/m/it/10 t\OT1/pplx/m/n
 /10 , \OML/zplm/m/it/10 b\OT1/zplm/m/n/10 (\OML/zplm/m/it/10 t\OT1/zplm/m/n/10 
@@ -1036,101 +1062,100 @@ Overfull \hbox (25.16962pt too wide) in paragraph at lines 374--376
  []
 
 
-Overfull \hbox (12.20996pt too wide) detected at line 382
+Overfull \hbox (12.20996pt too wide) detected at line 548
 []
  []
 
 
-Overfull \hbox (116.33427pt too wide) detected at line 390
+Overfull \hbox (116.33427pt too wide) detected at line 556
 [][]
  []
 
-
-Overfull \hbox (76.78609pt too wide) detected at line 406
-[]
- []
-
-[10]
-Overfull \hbox (22.43146pt too wide) detected at line 432
+[14]
+Overfull \hbox (76.78609pt too wide) detected at line 572
 []
  []
 
 
-Overfull \hbox (14.85129pt too wide) in paragraph at lines 442--443
+Overfull \hbox (22.43146pt too wide) detected at line 598
+[]
+ []
+
+
+Overfull \hbox (14.85129pt too wide) in paragraph at lines 608--609
 []\T1/pplj/m/n/10 Notice that $\OML/zplm/m/it/10 F[]$ \T1/pplj/m/n/10 sat-is-fi
 es the hy-poth-e-sis of []D'Auria et al.[] ([]2020[])[Lemma 
  []
 
 
-Overfull \hbox (130.32924pt too wide) in paragraph at lines 442--443
+Overfull \hbox (130.32924pt too wide) in paragraph at lines 608--609
 \OT1/zplm/m/n/10 (\OML/zplm/m/it/10 @[]F[] \OT1/zplm/m/n/10 + \U/fplmbb/m/n/10 
 L[]\OML/zplm/m/it/10 F[]\OT1/zplm/m/n/10 )(\OML/zplm/m/it/10 s\OT1/pplx/m/n/10 
 , \OML/zplm/m/it/10 x\OT1/zplm/m/n/10 ) = \OMS/zplm/m/n/10 ^^@\OML/zplm/m/it/10
  e[] [] \U/fplmbb/m/n/10 1 []$ 
  []
 
-
-Overfull \hbox (181.73491pt too wide) detected at line 448
+[15]
+Overfull \hbox (181.73491pt too wide) detected at line 614
 []
  []
 
-[11]
-LaTeX Font Info:    Try loading font information for U+bbm on input line 457.
- (/usr/share/texlive/texmf-dist/tex/latex/bbm-macros/ubbm.fd
+LaTeX Font Info:    Try loading font information for U+bbm on input line 623.
+(/usr/share/texlive/texmf-dist/tex/latex/bbm-macros/ubbm.fd
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 )
-Overfull \hbox (159.51894pt too wide) detected at line 457
+Overfull \hbox (159.51894pt too wide) detected at line 623
 []
  []
 
 
-Overfull \hbox (157.4685pt too wide) detected at line 473
+Overfull \hbox (157.4685pt too wide) detected at line 639
 []
  []
 
-[12]
-Overfull \hbox (149.81139pt too wide) detected at line 486
-[]
- []
-
-
-Overfull \hbox (90.6319pt too wide) detected at line 509
+[16]
+Overfull \hbox (149.81139pt too wide) detected at line 652
 []
  []
 
 
-Overfull \hbox (152.50989pt too wide) detected at line 516
+Overfull \hbox (90.6319pt too wide) detected at line 675
 []
  []
 
 
-Overfull \hbox (100.76543pt too wide) detected at line 521
-[]
- []
-
-[13]
-Overfull \hbox (159.86522pt too wide) detected at line 535
+Overfull \hbox (152.50989pt too wide) detected at line 682
 []
  []
 
 
-Overfull \hbox (121.70706pt too wide) detected at line 543
+Overfull \hbox (100.76543pt too wide) detected at line 687
+[]
+ []
+
+[17]
+Overfull \hbox (159.86522pt too wide) detected at line 701
 []
  []
 
 
-Overfull \hbox (5.68996pt too wide) in paragraph at lines 561--563
+Overfull \hbox (121.70706pt too wide) detected at line 709
+[]
+ []
+
+
+Overfull \hbox (5.68996pt too wide) in paragraph at lines 727--729
 \T1/pplj/m/it/10 derivat-ing in-side the stochas-tic in-te-gral term is al-lowe
 d since[] BLABLABLA, 
  []
 
-[14]
-Overfull \hbox (17.12155pt too wide) detected at line 572
+[18]
+Overfull \hbox (17.12155pt too wide) detected at line 738
 []
  []
 
 
-Overfull \hbox (13.13976pt too wide) in paragraph at lines 572--574
+Overfull \hbox (13.13976pt too wide) in paragraph at lines 738--740
 \T1/pplj/m/it/10 for some $\OML/zplm/m/it/10 [] \OMS/zplm/m/n/10 2 \OT1/zplm/m
 /n/10 ([]\OMS/zplm/m/n/10 f\OML/zplm/m/it/10 \OT1/pplx/m/n/10 , 0\OMS/zplm/m/n
 /10 g\OT1/pplx/m/n/10 , []\OMS/zplm/m/n/10 f\OML/zplm/m/it/10 \OT1/pplx/m/n/10
@@ -1141,7 +1166,7 @@ n/10 ) \OMS/zplm/m/n/10 !
  []
 
 
-Overfull \hbox (3.60341pt too wide) in paragraph at lines 572--574
+Overfull \hbox (3.60341pt too wide) in paragraph at lines 738--740
 \OT1/pplx/m/n/10 0$ \T1/pplj/m/it/10 as $\OML/zplm/m/it/10  \OMS/zplm/m/n/10 !
  \OT1/pplx/m/n/10 0$ \T1/pplj/m/it/10 for all $\OML/zplm/m/it/10 s[]\OT1/pplx/m
 /n/10 , \OML/zplm/m/it/10 s[]$\T1/pplj/m/it/10 , which along-side the con-ti-nu
@@ -1150,25 +1175,25 @@ Overfull \hbox (3.60341pt too wide) in paragraph at lines 572--574
 /n/10 , \OML/zplm/m/it/10 s[]\OT1/zplm/m/n/10 )$ 
  []
 
-[15] [16] (./AmOpOUB.bbl)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 747.
- [17]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 747.
+[19] [20] (./AmOpOUB.bbl)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 913.
+ [21]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 913.
  (./AmOpOUB.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 747.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 747.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 913.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 913.
 Package rerunfilecheck Info: File `AmOpOUB.out' has not changed.
 (rerunfilecheck)             Checksum: 6FE78A856718DC8418F52962C36ACB49;1099.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 747.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 913.
  ) 
 Here is how much of TeX's memory you used:
- 14750 strings out of 492615
- 210746 string characters out of 6131390
- 344532 words of memory out of 5000000
- 18239 multiletter control sequences out of 15000+600000
+ 14786 strings out of 492615
+ 211273 string characters out of 6131390
+ 349728 words of memory out of 5000000
+ 18256 multiletter control sequences out of 15000+600000
  65575 words of font info for 118 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 45i,16n,45p,1662b,479s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 45i,16n,45p,1662b,608s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/abel/.texlive2018/texmf-var/fonts/pk/ljfour/public/bbm/bbm10.600pk>{/
 usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/te
 xmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-di
@@ -1183,10 +1208,10 @@ xmf-dist/fonts/type1/public/fpl/fplrij8a.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/urw/palatino/uplb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw
 /palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/up
 lri8a.pfb>
-Output written on AmOpOUB.pdf (17 pages, 231299 bytes).
+Output written on AmOpOUB.pdf (21 pages, 247106 bytes).
 PDF statistics:
- 356 PDF objects out of 1000 (max. 8388607)
- 315 compressed objects within 4 object streams
- 82 named destinations out of 1000 (max. 500000)
+ 403 PDF objects out of 1000 (max. 8388607)
+ 358 compressed objects within 4 object streams
+ 101 named destinations out of 1000 (max. 500000)
  1065 words of extra memory for PDF output out of 10000 (max. 10000000)
 

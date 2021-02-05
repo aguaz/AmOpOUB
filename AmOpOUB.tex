@@ -75,7 +75,7 @@
 	\begin{align}\label{eq:OUB_SDE}
 	\dif X_s = \mu(s, X_s)\mathrm{d}s + \sigma\mathrm{d}W_s,\ \ 0 \leq s \leq T.
 	\end{align}
-	living in the filtered space $(\Omega, \mathcal{F}, \Pr, \{\mathcal{F}_s\}_{s \geq 0}^T)$, where $\{\mathcal{F}_s\}_{s \geq 0}^T$ is the natural filtration of the underlying standard Brownian motion $\{W_s\}_{s\geq 0}^{T}$, and with\sidenote{Actually, $\alpha < 0$ for an OUB, but results apply also for $\alpha \neq 0$.} $\alpha \neq 0$, $\sigma > 0$, and
+	living in the filtered space $(\Omega, \mathcal{F}, \Pr, \{\mathcal{F}_s\}_{s \geq 0}^T)$, where $\{\mathcal{F}_s\}_{s \geq 0}^T$ is the natural filtration of the underlying standard Brownian motion $\{W_s\}_{s\geq 0}^{T}$, and with\sidenote{The OUB does not get affected by the sign of $\alpha$, but rather by its absolute value.} $\alpha > 0$, $\sigma > 0$, and
 	\begin{align}\label{eq:OUB_drift}
 	\mu(t, x) = \alpha \frac{z - \cosh(\alpha(T - t)) x}{\sinh(\alpha(T - t))}.
 	\end{align}
@@ -109,7 +109,7 @@
 	X_{s}^{t, x} = x\frac{\sinh(\alpha (T - t - s))}{\sinh(\alpha (T - t))} &+ z\frac{\sinh(\alpha s)}{\sinh(\alpha (T - t))}  \\ 
 	&+ \sigma\int_{0}^s \frac{\sinh(\alpha (T - t - s))}{\sinh(\alpha (T - t - u))}\,\mathrm{d}W_u, \nonumber
 	\end{align}
-	and then,
+	and then\sidenote{\red{ToDo:} I'm not entirely sure about the value of $\partial_t X_s^{t, x}$ for $s = T - t$. I guess is zero as the $X_{T-t}^{t, x} = z$ for all $t$.},
 	\begin{align}
 	\partial_t X_s^{t, x} &= \begin{cases}
 		\alpha\left(\frac{\sinh(\alpha s)(z\cosh(\alpha(T - t)) - x)}{\sinh^2(\alpha(T - t))} - \sigma M_s^t\right), & s < T - t \\
@@ -117,7 +117,7 @@
 	\end{cases} \label{eq:OUB_t_rep_int} \\
 	\partial_x X_s^{t, x} &= \frac{\sinh(\alpha (T - t - s))}{\sinh(\alpha (T - t))}, \label{eq:OUB_x_rep_int}
 	\end{align}
-	where $M_s^t$ is the martingale
+	where $M_s^t$ takes the form
 	\begin{align}\label{eq:Ms}
 	M_s^{t} = \int_{0}^{s}\frac{\sinh(\alpha (s - u))}{\sinh^2(\alpha(T - t - u))}\dif W_u.
 	\end{align}
@@ -183,7 +183,7 @@
 			\begin{align}\label{eq:V_x}
 			\partial_xV(t, x) = -\E\left[e^{-\lambda\tau^*}\partial_x X_{\tau^*}^{t, x}\right],
 			\end{align} 
-			where $\tau^* = \tau^*(t, x)$ and 
+			where $\tau^* = \tau^*(t, x)$ and
 			\begin{align}\label{eq:N^t}
 			N^t = \sigma\int_{0}^{T - t} \frac{\sinh(\alpha (T - t))}{\sinh(\alpha (T - t - u))}\,\mathrm{d}W_u. 
 			\end{align} 			
@@ -205,7 +205,7 @@
 		L_{1, x, \delta} = \sup_{0\leq t \leq T - \delta}\E\left[\sup_{0\leq s \leq T - t}|\partial_tX_s^{t, x}|\right].
 		$$
 		
-		On the other hand, considering $0 < \varepsilon \leq T - t - \delta$, using similar arguments as the ones held in \eqref{eq:Vt-Vt-eps<}, and noticing that $\tau^*\wedge(T - t - \varepsilon)$ is admissible for $V(t - \varepsilon, x)$, we get
+		On the other hand, considering $0 < \varepsilon \leq T - t - \delta$, using similar arguments as the ones held in \eqref{eq:Vt-Vt-eps<}, and noticing that $\tau^*\wedge(T - t - \varepsilon)$ is admissible for $V(t + \varepsilon, x)$, we get
 		\begin{align}
 		V(t + \varepsilon, x) - V(t, x) &\geq \E_{t + \varepsilon, x}\left[V\left(t + \varepsilon + \tau^*\wedge(T - t - \varepsilon), X_{t + \tau^*\wedge(T - t - \varepsilon)}\right)\right] - \E_{t, x}\left[V\left(t + \tau^*, X_{t + \tau^*}\right)\right] \nonumber \\
 		&\geq \E_{t + \varepsilon, x}\left[G\left(X_{t + \tau^*\wedge(T - t - \varepsilon)}\right)\right] - \E_{t, x}\left[G\left(X_{t + \tau^*}\right)\right] \nonumber \\
@@ -295,39 +295,205 @@
 		
 		\ref{pr:V_x-V_t}\ \ As we have just proved in \ref{pr:V_C^12onC}, the partial derivatives of $V$ exist on $C$, and trivially they also exist on $D^{\circ}$ since $V = G$ on $D$. Therefore, for any $(t, x)\in [0, T)\times \R$ with $x\neq b(t)$, we can take $\varepsilon\rightarrow 0$ in \eqref{eq:Vt-Vt-eps<}, \eqref{eq:Vt+eps-Vt>}, and \eqref{eq:Vx+eps-Vx}, to derive equations \eqref{eq:Vt_up}, \eqref{eq:Vt_low}, and \eqref{eq:V_x} respectively.		
 	\end{pf}
+
+	Consider now the OSP
+	\begin{align}\label{eq:OSP_eps}
+	V^{\varepsilon}(t, x) = \sup_{\tau \leq T - \varepsilon - t}\E_{t, x}\left[e^{-\lambda\tau}G(X_{t + \tau})\right],
+	\end{align}
+	this is, finding the optimal strategy just by taking into account the evolution of the process up until time $T - \varepsilon$.
+	
+	\begin{pr}(Convergence of $V^\varepsilon$) \\
+
+	\end{pr}
+
+	\begin{pf}
+		It is both intuitive and pretty easy to check that $V(t, x) \geq V^\varepsilon(t, x)$ for $(t, x) \in [0, T - \varepsilon]\times\R$. Let $\tau^* = \tau^*(t, x)$ be the OST for \eqref{eq:OSP} and notice that $\tau^*\wedge(T - \varepsilon - t)$ it is an admissible stopping time for \eqref{eq:OSP_eps}. Therefore, due to the martingale and supermartingale properties of the value functions $V$ and $V^{\varepsilon}$, we get
+		\begin{align*}
+			0 &\leq V(t, x) - V^\varepsilon(t, x) \\
+			&\leq \E_{t, x}\left[V(t + \tau^*, X_{t + \tau^*}) - V^\varepsilon(t + \tau^*\wedge(T - \varepsilon - t))\right] \\
+			&= \E_{t, x}\left[\mathbb{1}(\tau^* < T - \varepsilon - t)\left(V(t + \tau^*, X_{t + \tau^*}) - V^\varepsilon(t + \tau^*, X_{t + \tau^*})\right)\right] \\
+			&\ \ \ \ + \E_{t, x}\left[\mathbb{1}(\tau^* \geq T - \varepsilon - t)\left(V(t + \tau^*, X_{t + \tau^*}) - V^\varepsilon(T - \varepsilon, X_{T - \varepsilon})\right)\right] \\
+			&\leq \E_{t, x}\left[\mathbb{1}(\tau^* \geq T - \varepsilon - t)\left(V(t + \tau^*, X_{t + \tau^*}) - V^\varepsilon(T - \varepsilon, X_{T - \varepsilon})\right)\right] \\ 
+			&\leq \E_{t, x}\left[\mathbb{1}(\tau^* \geq T - \varepsilon - t)\left(G(X_{t + \tau^*}) - G(X_{T - \varepsilon})\right)\right] \\
+			&\leq \E_{t, x}\left[\mathbb{1}(\tau^* \geq T - \varepsilon - t)\left|X_{T - \varepsilon} - X_{t + \tau^*}\right|\right] \\
+			&= \E_{t, x}\left[\mathbb{1}(\tau^* \geq T - \varepsilon - t)\E_{t, x}\left[\left|X_{T - \varepsilon} - X_{t + \tau^*}\right|\Big|\mathcal{F}_{T - \varepsilon - t}\right]\right] \\
+			&= \E_{t, x}\left[\mathbb{1}(\tau^* \geq T - \varepsilon - t)\E_{T - \varepsilon, X_{T - \varepsilon}}\left[\left|X_{T - \varepsilon} - X_{T - \varepsilon + \rho^*}\right|\right]\right],
+		\end{align*}
+		where $\rho^* = \tau^*(T - \varepsilon, X_{T - \varepsilon})$. Notice that,
+		\begin{align*}
+			&\E\left[\left|X_{T - \varepsilon + \rho^*} - X_{T - \varepsilon}\right| \Big | X_{T - \varepsilon = x}\right] \\
+			&= \E\left[\left|X_{\rho^*}^{T - \varepsilon, x} - x\right|\right] \\
+			&= \E\left[\left|x\frac{\sinh(\alpha (\varepsilon - \rho^*)) - \sinh(\alpha \varepsilon)}{\sinh(\alpha \varepsilon)} + z\frac{\sinh(\alpha \rho^*)}{\sinh(\alpha \varepsilon)}\right.\right. \\
+			&\ \ \ \ \left.\left.+ \sigma\int_{0}^{\rho^*} \frac{\sinh(\alpha (\varepsilon - \rho^*))}{\sinh(\alpha (\varepsilon - u))}\,\mathrm{d}W_u\right|\right]
+			%&= \E\left[\left|\int_{0}^{\rho^*}\mu\left(T - \varepsilon + u, X^{T - \varepsilon, x}\right)\,\dif u\right|\right] + \E\left[\left|\int_{0}^{\rho^*}\sigma\left(T - \varepsilon + u, X^{T - \varepsilon, x}\right)\,\dif W_u\right|\right].
+		\end{align*}
+		...
+	\end{pf}
+	
+	
+	
+	\begin{pr}(Regularity of $V^\varepsilon$)\label{pr:V^eps_regularity}\\
+		The value function $V^\varepsilon$ satisfies:
+		\begin{enumerate}[label=(\roman{*}), ref=(\textit{\roman{*}})]
+			\item \label{pr:V^eps_Lcontinuous} $V^\varepsilon$ is Lipschitz continuous on $[0, T - \varepsilon]\times\R$. 
+			\item \label{pr:V^eps_C^12onC} $V^\varepsilon$ is $\mathcal{C}^{1,2}$ on $C^\varepsilon$ and on $D^\varepsilon$, and $\partial_tV^\varepsilon + \mathbb{L}_{X}V^\varepsilon = \lambda V^\varepsilon$ on $C^\varepsilon$. 
+			\item \label{pr:V^eps_x-V^eps_t} The following relations hold for all $(t, x) \in [0, T)\times\R$ such that $x\neq b(t)$,
+			\begin{align}
+			\partial_t V^\varepsilon(t, x) &\leq \E\left[\left(-\partial_t X_{\tau^*}^{t, x}\right)^+\right], \label{eq:V^epst_up} \\		
+			\partial_t V^\varepsilon(t, x) &\geq - \E\left[\left(-\partial_t X_{\tau^*}^{t, x}\right)^-\right] \nonumber \\
+			&\ \ \ \ - \E\left[\mathbb{1}(\tau^* = T - t)\left(\alpha^2\frac{x + N^t - z}{\sinh(\alpha (T - t))}\right)^-\right], \label{eq:V^epst_low}
+			\end{align}
+			and
+			\begin{align}\label{eq:V^eps_x}
+			\partial_xV^\varepsilon(t, x) = -\E\left[e^{-\lambda\tau^*}\partial_x X_{\tau^*}^{t, x}\right],
+			\end{align} 
+			where $\tau^* = \tau^*(t, x)$ and\sidenote{Is it true?}
+			\begin{align}\label{eq:N^eps^t}
+			N^t = \sigma\int_{0}^{T - t} \frac{\sinh(\alpha (T - t))}{\sinh(\alpha (T - t - u))}\,\mathrm{d}W_u. 
+			\end{align} 			
+		\end{enumerate}
+	\end{pr}
+	
+	\begin{pf}
+		\ref{pr:V_Lcontinuous}\ \ \ Due to the martingale and super-martingale properties of $V^\varepsilon$, the fact that $V^\varepsilon \geq G$ on $[0, T)\times\R$ and $V^\varepsilon = G$ on $D^\varepsilon$, and inequality \eqref{eq:G_inequality}, one has the following for $0 < \delta \leq t$ and $\tau^* = \tau_\varepsilon^*(t, x)$, 
+		\begin{align}
+		V(t, x) - V(t - \delta, x) &\leq \E_{t, x}\left[V^\varepsilon(t + \tau^*, X_{t + \tau^*})\right] - \E_{t - \delta, x}\left[V^\varepsilon(t - \delta + \tau^*, X_{t + \tau^*})\right] \nonumber \\
+		&\leq \E_{t, x}\left[G(X_{t + \tau^*})\right] - \E_{t - \delta, x}\left[G(X_{t + \tau^*})\right] \nonumber \\
+		&= \E\left[G\left(X_{\tau^*}^{t, x}\right) - G\left(X_{\tau^*}^{t - \delta, x}\right)\right] \nonumber \\
+		&\leq \E\left[\left(X_{\tau^*}^{t - \delta, x} - X_{\tau^*}^{t, x}\right)^+\right] \nonumber \\
+		&= \delta\E\left[\left(-\partial_tX_{\tau^*}^{t_\delta, x}\right)^+\right] \label{eq:V^epst-V^epst-delta<} \\
+		&\leq \delta L_{1, x, \varepsilon}, \nonumber
+		\end{align}
+		where the last equality holds for some $t_\delta\in(t - \delta, t)$ due to the mean value theorem, and
+		$$
+		L_{1, x, \varepsilon} = \sup_{0\leq t \leq T - \varepsilon}\E\left[\sup_{0\leq s \leq T - t}|\partial_tX_s^{t, x}|\right].
+		$$
+		
+		On the other hand, considering $0 < \delta \leq T - \varepsilon - t$, using similar arguments as the ones held in \eqref{eq:V^epst-V^epst-delta<}, and noticing that $\tau^*\wedge(T - \varepsilon - t - \delta)$ is admissible for $V^\varepsilon(t - \delta, x)$, we get
+		\begin{align}
+		V^\varepsilon(t + \delta, x) - V^\varepsilon(t, x) &\geq \E_{t + \delta, x}\left[V^\varepsilon\left(t + \delta + \tau^*\wedge(T - \varepsilon - t - \delta), X_{t + \delta + \tau^*\wedge(T - \varepsilon - t - \delta)}\right)\right] - \E_{t, x}\left[V^\varepsilon\left(t + \tau^*, X_{t + \tau^*}\right)\right] \nonumber \\
+		&\geq \E_{t + \varepsilon, x}\left[G\left(X_{t + \delta + \tau^*\wedge(T - \varepsilon - t - \delta)}\right)\right] - \E_{t, x}\left[G\left(X_{t + \tau^*}\right)\right] \nonumber \\
+		&= \E\left[G\left(X_{\tau^*\wedge(T - \varepsilon - t - \delta)}^{t + \delta, x}\right) - G\left(X_{\tau^*}^{t, x}\right)\right] \nonumber \\
+		&\geq \E\left[-\left(X_{\tau^*}^{t, x} - X_{\tau^*\wedge(T - \varepsilon - t - \delta)}^{t + \delta, x}\right)^-\right] \nonumber \\
+		&= -\E\left[\mathbb{1}(\tau^*\leq T - \varepsilon - t - \delta)\left(X_{\tau^*}^{t, x} - X_{\tau^*}^{t + \delta, x}\right)^-\right] - \E\left[\mathbb{1}(\tau^* > T - \varepsilon - t - \delta)\left(X_{\tau^*}^{t, x} - X_{T - \varepsilon - t - \delta}^{t + \delta, x}\right)^-\right] \nonumber\\
+		&\geq -\E\left[\mathbb{1}(\tau^*\leq T - \varepsilon - t - \delta)\left(X_{\tau^*}^{t, x} - X_{\tau^*}^{t + \delta, x}\right)^-\right] \nonumber \\
+		&\ \ \ \ - \E\left[\mathbb{1}(\tau^* > T - \varepsilon - t - \delta)\left(X_{\tau^*}^{t, x} - X_{T - \varepsilon - t - \delta}^{t, x}\right)^-\right] \nonumber\\
+		&\ \ \ \ - \E\left[\mathbb{1}(\tau^* > T - \varepsilon - t - \delta)\left(X_{T - \varepsilon - t - \delta}^{t, x} - X_{T - \varepsilon - t - \delta}^{t + \delta, x}\right)^-\right].\label{eq:V^epst+delta-V^epst>}
+		\end{align}
+		Notice that
+		$$
+		\E\left[\mathbb{1}(\tau^*\leq T - \varepsilon - t - \delta)\left(X_{\tau^*}^{t, x} - X_{\tau^*}^{t + \delta, x}\right)^-\right] \leq \varepsilon L_{1, x, \varepsilon}.
+		$$
+		Also,
+		\begin{align}
+			&\E\left[\mathbb{1}(\tau^* > T - t - \varepsilon - \delta)\left(X_{\tau^*}^{t, x} - X_{T - \varepsilon - t - \delta}^{t, x}\right)^-\right] \nonumber \\
+			&\leq \E\left[\sup_{0 \leq h\leq \delta}\left|X_{T - \varepsilon - t - h}^{t, x} - X_{T - \varepsilon - t - h}^{t, x}\right|\right] \nonumber \\
+			&= \E\left[\sup_{0 \leq h\leq \delta}\left|x\frac{\sinh(\alpha(\varepsilon + h)) - \sinh(\alpha(\varepsilon + \delta))}{\sinh(\alpha(T - t))} + z\frac{\sinh(\alpha(T - \varepsilon - t - h)) - \sinh(\alpha(T - \varepsilon - t - \delta))}{\sinh(\alpha(T - t))} \nonumber \right.\right.\\
+			&\hspace{1cm}+\left.\left. \int_{0}^{T - \varepsilon - t - \delta}\frac{\sinh(\alpha(\varepsilon + h)) - \sinh(\alpha(\varepsilon + \delta))}{\sinh(\alpha(T - t - u))}\,\dif W_u + \int_{T - \varepsilon - t - \delta}^{T - \varepsilon - t - h}\frac{\sinh(\alpha(\varepsilon + h))}{\sinh(\alpha(T - t - u))}\,\dif W_u\right|\right] \nonumber \\
+			&\leq \E\left[\sup_{0 \leq h\leq \delta}(\delta - h)\left|\alpha\frac{\cosh(h')\left(x + \int_{0}^{T - \varepsilon - t - \delta}\frac{\sinh(\alpha(T - t))}{\sinh(\alpha(T - t - u))}\dif W_u\right) + z\cosh(h'')}{\sinh(\alpha(T - t))}\right|\right] \nonumber \\
+			&\ \ \ \ + \E\left[\sup_{0 \leq h\leq \delta}\left|\int_{T - \varepsilon - t - \delta}^{T - \varepsilon - t - h}\frac{\sinh(\alpha(\varepsilon + h))}{\sinh(\alpha(T - t - u))}\,\dif W_u\right|\right] \nonumber \\
+			&\leq \varepsilon L_{2, x, \delta} \nonumber
+		\end{align}
+		Using the Cauchy-Schwartz inequality and the maximal upper inequality in Theorem 14.13 from \citet{schilling2012brownian}, we get the following,
+		\begin{align*}
+			\E\left[\sup_{0 \leq h\leq \delta}\left|\int_{T - \varepsilon - t - \delta}^{T - \varepsilon - t - h}{\sinh^{-1}(\alpha(T - t - u))}\,\dif W_u\right|\right] &\leq \left(\E\left[\sup_{0 \leq h\leq \delta}\left(\int_{T - \varepsilon - t - \delta}^{T - \varepsilon - t - h}{\sinh^{-1}(\alpha(T - t - u))}\,\dif W_u\right)^2\right]\right)^{1/2} \\
+			&\leq 2\left(\int_{T - \varepsilon - t - \delta}^{T - \varepsilon - t}{\sinh^{-2}(\alpha(T - t - u))}\,\dif u\right)^{1/2} \\
+			&= 2\alpha^{-1/2}\left(\coth(\alpha(\varepsilon + \delta)) - \coth(\alpha(\varepsilon + h))\right)^{1/2}
+		\end{align*}
+		ALTERNATIVE WAY 
+		\begin{align*}
+			V^\varepsilon(t + \delta, x) - V^\varepsilon(t, x) &\geq \E_{t + \delta, x}\left[V^\varepsilon\left(t + \delta + \tau^*\wedge(T - \varepsilon - t - \delta), X_{t + \delta + \tau^*\wedge(T - \varepsilon - t - \delta)}\right)\right] - \E_{t, x}\left[V^\varepsilon\left(t + \tau^*, X_{t + \tau^*}\right)\right] \nonumber \\
+			&= \E\left[\mathbb{1}(\tau^* \leq T - \varepsilon - t - \delta)\left(V^\varepsilon(t + \delta + \tau^*, X_{\tau^*}^{t + \delta, x}) - V^\varepsilon(t + \tau^*, X_{\tau^*}^{t, x})\right)\right] \nonumber \\
+			&\hspace{0.5cm} + \E\left[\mathbb{1}(\tau^* > T - \varepsilon - t - \delta)\left(V^\varepsilon(T - \varepsilon, X_{T - \varepsilon - t - \delta}^{t + \delta, x}) - V^\varepsilon(t + \tau^*, X_{\tau^*}^{t, x})\right)\right] \nonumber \\
+			&=
+		\end{align*}
+	\end{pf}
+
 	
 	\begin{pr}\label{pr:OSB_LC_OUB}
 		The OSB $b$ is Lipschitz continuous on $[0, T - \varepsilon]$ for any $0 < \varepsilon < T$.
 	\end{pr}
 	
 	\begin{pf}
-		Consider the function $W(t, x) = V(t, x) - G(x)$ and the interval $I_\varepsilon = [0, T - \varepsilon]$ for $0 < \varepsilon < T$. Propositions \ref{pr:boundary_existence} and \ref{pr:V_regularity} guarantee that $W$ is continuous and $W(t, A) > 0$ for all $t\in I_\varepsilon$. Hence, there exists $a > 0$ such that $W(t, A) \geq a$ for all $t\in I_\varepsilon$. Therefore, for all $\delta$ such that $0 < \delta \leq a$, the equation $W(t, x) = \delta$ has solution on $C$ for all $t\in I_\varepsilon$. Moreover, since Proposition \ref{pr:V_regularity} states that $\partial_x W > 0$ on $C$, this solution is unique for each $t$ and we can denote it by $b_\delta(t)$, where  $b_\delta:I_\varepsilon\rightarrow (b(t), A]$. The continuity of $b_\delta$ on $I_\varepsilon$ comes after the continuity of $W$. Furthermore, the implicit function theorem guarantees that $b_\delta$ is differentiable and 
+		Consider the function $W(t, x) = V^\varepsilon(t, x) - G(x)$ and the interval. Propositions \ref{pr:boundary_existence} and \ref{pr:V^eps_regularity} guarantee that $W$ is continuous and $W(t, A) > 0$ for all $t\in [0, T - \varepsilon]$. Hence, there exists $a > 0$ such that $W(t, A) \geq a$ for all $t\in [0, T - \varepsilon]$. Therefore, for all $\delta$ such that $0 < \delta \leq a$, the equation $W(t, x) = \delta$ has solution on $C^\varepsilon$ for all $t\in [0, T - \varepsilon]$. Moreover, since Proposition \ref{pr:V^eps_regularity} states that $\partial_x W > 0$ on $C^\varepsilon$, this solution is unique for each $t$ and we can denote it by $b_{\delta, \varepsilon}(t)$, where  $b_{\delta, \varepsilon}:[0, T - \varepsilon]\rightarrow (b_\varepsilon(t), A]$. The continuity of $b_{\delta, \varepsilon}$ on $[0, T - \varepsilon]$ comes after the continuity of $W$. Furthermore, the implicit function theorem guarantees that $b_{\delta, \varepsilon}$ is differentiable and  
 		\begin{align}\label{eq:b_delta'}
-		b_\delta'(t) = -\partial_t W(t, b_\delta(t)) / \partial_x W(t, b_\delta(t)).
+		b_{\delta, \varepsilon}'(t) = -\partial_t W(t, b_{\delta, \varepsilon}(t)) / \partial_x W(t, b_\delta(t)).
 		\end{align}
 		
-		Notice that $b_{\delta}$ is decreasing in $\delta$ and therefore it converges point-wise to some limit function $b_0(t)$, which satisfies $b_0 > b$ in $I_\varepsilon$ as $b_\delta > b$ for all $\delta$. On the other hand, since $W(t, b_\delta(t)) = \delta$ and $W$ is continuous it follows that $W(t, b_0(t)) = 0$ after taking $\delta\rightarrow 0$, which means that $b_0 < b$ in $I_\varepsilon$ and hence $b_0 = b$ in $I_\varepsilon$.
+		Notice that $b_{\delta, \varepsilon}$ is decreasing in $\delta$ and therefore it converges point-wise to some limit function $b_0(t)$, which satisfies $b_0 > b_\varepsilon$ in $[0, T - \varepsilon]$ as $b_\delta > b$ for all $\delta$. On the other hand, since $W(t, b_{\delta, \varepsilon}(t)) = \delta$ and $W$ is continuous it follows that $W(t, b_0(t)) = 0$ after taking $\delta\rightarrow 0$, which means that $b_0 < b_\varepsilon$ in $[0, T - \varepsilon]$ and hence $b_0 = b_\varepsilon$ in $[0, T - \varepsilon]$.
 		
 		%%%
-		Combining \eqref{eq:b_delta'}, \eqref{eq:Vt_up} and \eqref{eq:V_x}, then using the explicit form \eqref{eq:OUB_t_rep_int}, denoting $x_\delta = b_\delta(t)$ and $\tau_\delta = \tau^*(t, x_\delta)$, and noticing that $x_\delta < A$ for all $\delta$, one gets
+		Combining \eqref{eq:b_delta'}, \eqref{eq:V^epst_up} and \eqref{eq:V^eps_x}, then using the explicit form \eqref{eq:OUB_t_rep_int}, denoting $x_\delta = b_{\delta, \varepsilon}(t)$ and $\tau_\delta = \tau_\varepsilon^*(t, x_\delta)$, and noticing that $x_\delta < A$ for all $\delta$, one gets\sidenote{We will assume $\alpha > 0$ as its signs is irrelevant for the underlying OUB. See \eqref{eq:OUB_rep_int}.}
 		\begin{align}
-		b_\delta'(t) &\geq -\displaystyle{\frac{\E\left[\left(-\partial_t X_{\tau_\delta}^{t, x_\delta}\right)^+\right]}{1 - \E\left[e^{-\lambda\tau_\delta}\frac{\sinh(\alpha (T - t - \tau_\delta))}{\sinh(\alpha (T - t))}\right]}} \nonumber \\
+		b_{\delta, \varepsilon}'(t) &\geq -\displaystyle{\frac{\E\left[\left(-\partial_t X_{\tau_\delta}^{t, x_\delta}\right)^+\right]}{1 - \E\left[e^{-\lambda\tau_\delta}\frac{\sinh(\alpha (T - t - \tau_\delta))}{\sinh(\alpha (T - t))}\right]}} \nonumber \\
 		&\geq -\frac{\E\left[\left(-\partial_t X_{\tau_\delta}^{t, x_\delta}\right)^+\right]}{\E\left[\frac{\sinh(\alpha(T - t)) - \sinh(\alpha (T - t - \tau_\delta))}{\sinh(\alpha (T - t))}\right]} \nonumber \\
-		&= -\frac{\E\left[\left(\alpha\frac{\sinh(\alpha \tau_\delta)(x_\delta - z\cosh(\alpha(T - t)))}{\sinh(\alpha(T - t))} + \alpha\sinh(\alpha(T - t))M_{\tau_\delta}^t\right)^+\right]\mathbb{1}(\tau_\delta < T - t)}{\E\left[\sinh(\alpha(T - t)) - \sinh(\alpha (T - t - \tau_\delta))\right]} \nonumber \\
-		&\geq -\frac{\E\left[\left(\alpha\frac{\sinh(\alpha \tau_\delta)(A + |z|\cosh(\alpha T))}{\sinh(\alpha(T - t))} + \alpha\sinh(\alpha(T - t))M_{\tau_\delta}^t\right)^+\right]\mathbb{1}(\tau_\delta < T - t)}{\E\left[\sinh(\alpha(T - t)) - \sinh(\alpha (T - t - \tau_\delta))\right]} \nonumber \\
-		&= -\frac{\E\left[\left(\alpha^2\frac{\tau_\delta\cosh(\zeta_{1,\delta})(A + |z|\cosh(\alpha T))}{\sinh(\alpha(T - t))} + \alpha\sinh(\alpha(T - t))M_{\tau_\delta}^t\right)^+\right]\mathbb{1}(\tau_\delta < T - t)}{\alpha\E\left[\tau_\delta\cosh(\zeta_{2,\delta})\right]} \nonumber \\
-		&\geq -\frac{\E\left[\left(\alpha^2\frac{\tau_\delta\cosh(\alpha T)(A + |z|\cosh(\alpha T))}{\sinh(\alpha \varepsilon)} + \alpha\sinh(\alpha T) M_{\tau_\delta}^t\right)^+\right]\mathbb{1}(\tau_\delta < T - t)}{\alpha\E\left[\tau_\delta\right]} \nonumber \\
-		&\geq -L_{1,\varepsilon} \left(L_{1} + \frac{\E\left[\mathbb{1}(\tau_\delta < T - t)\left(M_{\tau_\delta}^t \right)^+\right]}{\E\left[\tau_\delta\right]}\right) \label{eq:b_delta'>}
+		&= -\frac{\E\left[\left(\alpha\frac{\sinh(\alpha \tau_\delta)(x_\delta - z\cosh(\alpha(T - t)))}{\sinh(\alpha(T - t))} + \alpha\sinh(\alpha(T - t))M_{\tau_\delta}^t\right)^+\right]}{\E\left[\sinh(\alpha(T - t)) - \sinh(\alpha (T - t - \tau_\delta))\right]} \nonumber \\
+		&\geq -\alpha\frac{(A + |z|\cosh(\alpha T))}{\sinh(\alpha\varepsilon)}\frac{\E\left[\sinh(\alpha \tau_\delta)\right]}{\E\left[\sinh(\alpha(T - t)) - \sinh(\alpha (T - t - \tau_\delta))\right]} \nonumber \\
+		&\ \ \ \ -\alpha\sinh(\alpha T)\frac{\E\left[\left(M_{\tau_\delta}^t\right)^+\right]}{\E\left[\sinh(\alpha(T - t)) - \sinh(\alpha (T - t - \tau_\delta))\right]} \nonumber
 		\end{align}
-		where $M_s^t$ is given in \eqref{eq:Ms}, $\zeta_{1,\delta}$ and $\zeta_{2,\delta}$ are random variables coming from applying the mean value theorem to the function $\sinh(t)$, and $L_{1}$ and $L_{1, \varepsilon}$ are positive constants independent from $\delta$. We also used the fact that $(ax)^+ = a(x)^+$ for any $a\geq0$, $x\in\R$, and the subaditivity of $x\mapsto (x)^+$.
+%		&= -\frac{\E\left[\left(\alpha^2\frac{\tau_\delta\cosh(\zeta_{1,\delta})(A + |z|\cosh(\alpha T))}{\sinh(\alpha(T - t))} + \alpha\sinh(\alpha(T - t))M_{\tau_\delta}^t\right)^+\right]}{\alpha\E\left[\tau_\delta\cosh(\zeta_{2,\delta})\right]} \nonumber \\
+%		&\geq -\frac{\E\left[\left(\alpha^2\frac{\tau_\delta\cosh(\alpha T)(A + |z|\cosh(\alpha T))}{\sinh(\alpha \varepsilon)} + \alpha\sinh(\alpha T) M_{\tau_\delta}^t\right)^+\right]}{\alpha\E\left[\tau_\delta\right]} \nonumber \\
+%		&\geq -L_{1,\varepsilon} \left(L_{1} + \frac{\E\left[\left(M_{\tau_\delta}^t \right)^+\right]}{\E\left[\tau_\delta\right]}\right) \label{eq:b_delta'>}
+%		\end{align}
+		where $M_s^t$ is given in \eqref{eq:Ms}.
 		
-		Notice that, since $x^+ \leq 1 + x^2$ for all $x\in \R$, then
+		We can now apply the mean value theorem to the function $\sinh(t)$ to come up with random variables $\zeta_{1,\delta} \in (0, \alpha \tau_\delta)$ and $\zeta_{2,\delta} \in (\alpha(T - t - \tau_\delta), \alpha(T - t))$, such that
+		\begin{align}\label{eq:sinh_bound}
+			\frac{\E\left[\sinh(\alpha \tau_\delta)\right]}{\E\left[\sinh(\alpha(T - t)) - \sinh(\alpha (T - t - \tau_\delta))\right]} &= \frac{\E\left[\alpha\tau_\delta\cosh(\zeta_{1,\delta})\right]}{\E\left[\alpha\tau_\delta \cosh(\zeta_{2,\delta})\right]} \nonumber \\ 
+			&\leq \cosh(\alpha T).
+		\end{align}
+		Also notice that, according to \eqref{eq:Ms}, $M_{\tau_\delta}^t$ admits the representation
 		\begin{align*}
-			\E\left[\left(\mathbb{1}(\tau_\delta < T - t)M_{\tau_\delta}^t\right)^+\right] &\leq 1 + \E\left[\mathbb{1}(\tau_\delta < T - t)\left(M_{\tau_\delta}^t\right)^2\right] \\
-			&\leq (T - t)\left(1 + \E\left[\sup_{s\leq \tau_\delta}\left(M_s^t\right)^2\right]\right) \\
-			&\leq L_\varepsilon\left(1 + \E\left[\int_0^{\tau_\delta} \frac{\sinh^{2}(\alpha(\tau_\delta - s))}{\sinh^{4}(\alpha(T - t - s))} \dif s\right]\right),
+		M_s^{\tau_\delta} &\leq \sinh(\alpha\tau_\delta)\int_{0}^{\tau_\delta}\frac{\cosh(\alpha u)}{\sinh^2(\alpha(T - t - u))}\,\dif W_u \\
+		&\ \ \ \ + \cosh(\alpha\tau_\delta)\int_{0}^{\tau_\delta}\frac{\sinh(\alpha u)}{\sinh^2(\alpha(T - t - u))}\,\dif W_u,
 		\end{align*}
-		where the last inequality comes after the Burkholder-Davis-Gundy inequality (see \citet[Corollary 4.2]{revuz_continuous_1999})
+		which can be used, alongside \eqref{eq:sinh_bound}, to derive the following bound
+		\begin{align}
+			&\frac{\E\left[\left(M_{\tau_\delta}^t\right)^+\right]}{\E\left[\sinh(\alpha(T - t)) - \sinh(\alpha (T - t - \tau_\delta))\right]} \nonumber \\ 
+			&\leq \cosh(\alpha T)\frac{\E\left[\sinh(\alpha\tau_\delta)\left(\int_{0}^{\tau_\delta}\frac{\cosh(\alpha u)}{\sinh^2(\alpha(T - t - u))}\,\dif W_u\right)^+\right]}{\E\left[\sinh(\alpha\tau_\delta)\right]} \label{eq:term1} \\
+			&\ \ \ \ +\cosh(\alpha T)\frac{\E\left[\cosh(\alpha\tau_\delta)\left(\int_{0}^{\tau_\delta}\frac{\sinh(\alpha u)}{\sinh^2(\alpha(T - t - u))}\,\dif W_u\right)^+\right]}{\E\left[\sinh(\alpha\tau_\delta)\right]}. \label{eq:term2}
+		\end{align}
+		We can find an upper bound for term \eqref{eq:term1} by using the fact that $(x)^+ \leq 1 + x^2$, for all $x\in \R$, as follows,
+		\begin{align*}
+			&\frac{\E\left[\sinh(\alpha\tau_\delta)\left(\int_{0}^{\tau_\delta}\frac{\cosh(\alpha u)}{\sinh^2(\alpha(T - t - u))}\,\dif W_u\right)^+\right]}{\E\left[\sinh(\alpha\tau_\delta)\right]} \\
+			&\leq \frac{\E\left[\sinh(\alpha\tau_\delta)\left(1 + \sup_{s\leq \tau_\delta}\left(\int_{0}^{s}\frac{\cosh(\alpha u)}{\sinh^2(\alpha(T - t - u))}\,\dif W_u\right)^2\right)\right]}{\E\left[\sinh(\alpha\tau_\delta)\right]} \\
+			&\leq 1 + \sinh(\alpha T)\frac{\E\left[\sup_{s\leq \tau_\delta}\left(\int_{0}^{s}\frac{\cosh(\alpha u)}{\sinh^2(\alpha(T - t - u))}\,\dif W_u\right)^2\right]}{\E\left[\sinh(\alpha\tau_\delta)\right]} \\
+			&\leq 1 + K_1\frac{\E\left[\int_{0}^{\tau_\delta}\frac{\cosh^2(\alpha u)}{\sinh^4(\alpha(T - t - u))}\,\dif u\right]}{\E\left[\sinh(\alpha\tau_\delta)\right]} \\
+			&\leq 1 + K_1\frac{\E\left[\tau_\delta\frac{\cosh^2(\alpha T)}{\sinh^4(\alpha(\varepsilon))}\right]}{\E\left[\sinh(\alpha\tau_\delta)\right]} \\
+			&= 1 + K_1\frac{\E\left[\tau_\delta\frac{\cosh^2(\alpha T)}{\sinh^4(\alpha(\varepsilon))}\right]}{\E\left[\alpha\tau_\delta\cosh(\zeta_{1,\delta})\right]} \\
+			&\leq 1 + K_1\frac{\cosh^2(\alpha T)}{\alpha\sinh^4(\alpha(\varepsilon))}.
+		\end{align*}
+		From some positive constant $K_1$ coming after applying the Burkholder-Davis-Gundy inequality (see \citet[Corollary 4.2]{revuz_continuous_1999}).
+		
+		Similar arguments yield an upper bound for term \eqref{eq:term2},
+		\begin{align*}
+			&\frac{\E\left[\cosh(\alpha\tau_\delta)\left(\int_{0}^{\tau_\delta}\frac{\sinh(\alpha u)}{\sinh^2(\alpha(T - t - u))}\,\dif W_u\right)^+\right]}{\E\left[\sinh(\alpha\tau_\delta)\right]} \\
+			&\leq \cosh(\alpha T)\frac{\E\left[\sup_{s\leq \tau_\delta}\left|\int_{0}^{s}\frac{\sinh(\alpha u)}{\sinh^2(\alpha(T - t - u))}\,\dif W_u\right|\right]}{\E\left[\sinh(\alpha\tau_\delta)\right]} \\
+			&\leq K_2\cosh(\alpha T)\frac{\E\left[\left(\int_{0}^{\tau_\delta}\frac{\sinh^2(\alpha u)}{\sinh^4(\alpha(T - t - u))}\,\dif u\right)^{1/2}\right]}{\E\left[\sinh(\alpha\tau_\delta)\right]} \\
+			&\leq K_2\frac{\cosh(\alpha T)}{\sinh^2(\alpha\varepsilon)}\frac{\E\left[\sqrt{\tau_\delta}\sinh(\alpha \tau_\delta)\right]}{\E\left[\sinh(\alpha\tau_\delta)\right]} \\
+			&\leq K_2\sqrt{T}\frac{\cosh(\alpha T)}{\sinh^2(\alpha\varepsilon)}
+		\end{align*}
+		for a positive constant $K_2$.
+		
+		
+		
+		
+		
+		
+		
+
+		
+		
+		
+		
+%		
+%		Notice that, since $x^+ \leq 1 + x^2$ for all $x\in \R$, then
+%		\begin{align*}
+%			\E\left[\left(M_{\tau_\delta}^t\right)^+\right] &\leq 1 + \E\left[\left(M_{\tau_\delta}^t\right)^2\right] \\
+%			&\leq 1 + \E\left[\sup_{s\leq \tau_\delta}\left(M_s^t\right)^2\right] \\
+%			&\leq L_\varepsilon\left(1 + \E\left[\int_0^{\tau_\delta} \frac{\sinh^{2}(\alpha(\tau_\delta - s))}{\sinh^{4}(\alpha(T - t - s))} \dif s\right]\right),
+%		\end{align*}
+%		where the last inequality comes after the Burkholder-Davis-Gundy inequality (see \citet[Corollary 4.2]{revuz_continuous_1999})
 		
 		On the other hand, using now \eqref{eq:Vt_low} and following similar arguments we get
 		%		\begin{align}
