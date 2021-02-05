@@ -61,16 +61,16 @@
 %%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
-
-\maketitle% this prints the handout title, author, and date
-
-\begin{abstract}
-\noindent ABSTRACT 
-\end{abstract}
-
-	    
+	
+	\maketitle% this prints the handout title, author, and date
+	
+	\begin{abstract}
+		\noindent ABSTRACT 
+	\end{abstract}
+	
+	
 	\section{Introducction}
-	 
+	
 	Let $X = \{X_s\}_{s \geq 0}^{T}$ be an Orstein-Uhlenbeck Bridge\sidenote{Definition: let $Y = \{Y_s\}_{s\geq 0}^T$ be a Orstein-Uhlenbeck process. Then, $X = \{X_s\}_{s \geq 0}^{T}$ is said to be an OUB from $X_0 = Y_0$ to $X_T = z$ if $$\mathrm{Law}(X, \Pr) = \mathrm{Law}(Y, \Pr_{T, z}),$$ where $\Pr_{T, z} := \Pr(\cdot | Y_T = z)$.} (OUB) with final value $X_T = z$. It is well known (see, e.g., \citet{Barczy2013Sample}) that $X$ follows the dynamics\sidenote{We are setting to zero the parameter coming from the stationary mean of the underlying Orstein-Uhlenbeck process. The OUB is pulled towards this parameter if $\alpha < 0$ and pushed away if $\alpha > 0$.}
 	\begin{align}\label{eq:OUB_SDE}
 	\dif X_s = \mu(s, X_s)\mathrm{d}s + \sigma\mathrm{d}W_s,\ \ 0 \leq s \leq T.
@@ -94,7 +94,7 @@
 	
 	Sometimes it is useful to keep track of the condition $X_t = x$ in a way that does not change the probability measure whenever $t$ or $x$ change. To do so, we denote the process $X^{t, x} = \{X_s^{t, x}\}_{s\geq 0}^{T - t}$ in the filtered space $(\Omega, \mathcal{F}, \Pr, \{\mathcal{F}_s\}_{s\geq 0}^{T - t})$ such that
 	\begin{align}\label{eq:lawX^{t,x}-X}
-		\mathrm{Law}(\{X_s^{t, x}\}_{s\geq0}^{T - t}, \Pr) = \mathrm{Law}(\{X_{t + s}\}_{s\geq 0}^{T - t}, \Pr_{t, x}).	
+	\mathrm{Law}(\{X_s^{t, x}\}_{s\geq0}^{T - t}, \Pr) = \mathrm{Law}(\{X_{t + s}\}_{s\geq 0}^{T - t}, \Pr_{t, x}).	
 	\end{align}
 	Notice that $X_0^{t,x} = x$ $\Pr$-a.s. 
 	
@@ -112,8 +112,8 @@
 	and then\sidenote{\red{ToDo:} I'm not entirely sure about the value of $\partial_t X_s^{t, x}$ for $s = T - t$. I guess is zero as the $X_{T-t}^{t, x} = z$ for all $t$.},
 	\begin{align}
 	\partial_t X_s^{t, x} &= \begin{cases}
-		\alpha\left(\frac{\sinh(\alpha s)(z\cosh(\alpha(T - t)) - x)}{\sinh^2(\alpha(T - t))} - \sigma M_s^t\right), & s < T - t \\
-		0, & s = T - t 
+	\alpha\left(\frac{\sinh(\alpha s)(z\cosh(\alpha(T - t)) - x)}{\sinh^2(\alpha(T - t))} - \sigma M_s^t\right), & s < T - t \\
+	0, & s = T - t 
 	\end{cases} \label{eq:OUB_t_rep_int} \\
 	\partial_x X_s^{t, x} &= \frac{\sinh(\alpha (T - t - s))}{\sinh(\alpha (T - t))}, \label{eq:OUB_x_rep_int}
 	\end{align}
@@ -143,7 +143,7 @@
 	\E_{t, x}\left[V(t + s, X_{t + s})\right] &\leq V(t, x), \label{eq:V_supermartingale}
 	\end{align}	
 	for all $0 \leq s < T - t.$
-				
+	
 	\section{Regularities of the boundary and the value function}
 	
 	\begin{pr}\label{pr:boundary_existence}(Boundary existence and the shape of the stopping set)\\
@@ -151,23 +151,23 @@
 	\end{pr}
 	
 	\begin{pf}
-	$(\mathcal{A}^+ \in C)$\sidenote{This fact remains true for all regular processes.}\ \ Let $(t, x)\in \mathcal{A}^+ := [0, T)\times[A, \infty)$, and consider the stopping time $\tau_\varepsilon = \inf\{s\in[0, T - t] :\ X_{t + s} \leq A - \varepsilon\}$ for some $\varepsilon > 0$ assuming that $\inf\{\emptyset\} = T - t$. Then, since $\tau_{\varepsilon} \leq T - t$ and $p := \mathbb{P}(\tau_\varepsilon < T - t) > 0$,
-	\begin{align*}
+		$(\mathcal{A}^+ \in C)$\sidenote{This fact remains true for all regular processes.}\ \ Let $(t, x)\in \mathcal{A}^+ := [0, T)\times[A, \infty)$, and consider the stopping time $\tau_\varepsilon = \inf\{s\in[0, T - t] :\ X_{t + s} \leq A - \varepsilon\}$ for some $\varepsilon > 0$ assuming that $\inf\{\emptyset\} = T - t$. Then, since $\tau_{\varepsilon} \leq T - t$ and $p := \mathbb{P}(\tau_\varepsilon < T - t) > 0$,
+		\begin{align*}
 		V(t, x) \geq \mathbb{E}_{t, x}\left[e^{-\lambda\tau_{\varepsilon}}G(X_{t + \tau_{\varepsilon}})\right] \geq e^{-\lambda(T - t)}p\varepsilon > 0 = G(x),
-	\end{align*}
-	this is, $(t, x)\in C$. Therefore $\mathcal{A}^+ \subset C$.	\\ \vspace{0.3cm}
-	
-	$(D = \{(t, x) : x \leq b(t)\})$\sidenote{Relies on $^xX_s^{T - t, z} \leq\ ^{x'}X_s^{T - t, z}$ for all $s\in [0, T - t]$ a.s. whenever $x \leq x'$, i.e. the process is decreasing with respect to the spacial initial condition.}\ \ Define $b(t) := \sup\{x : (t, x) \in D\}$. We have proved that $b(t) < A$ for all $t\in[0, T)$ and it is obvious that $b(T) = \min\{A, z\}$. On the other hand, due to $X_s^{t, x} \leq\ X_s^{t, x'}$ for all $s\in [0, T - t]$ $\Pr$-a.s. whenever $x \leq x'$, we can ensure that $D$ lies bellow the curve $b$. Moreover, since $D$ is closed, $(t, b(t)) \in D$ for all $t\in[0, T]$, which guarantees that $D$ has the claimed shape. \\  \vspace{0.3cm}
-	
-	$(\infty < b(t))$\ \ The from of the drift $\mu(t, x)$ of the OUB in \eqref{eq:OUB_drift} guarantees the existence of a function $u:[0, T] \rightarrow R$ such that $\mu(t, x) \geq 0$ for all $x \leq u(t)$ and $\mu(t, x) \leq 0$ for all $x \geq u(t)$. Define $m := \min_{t\in[0,T)}\{u(t)\}$. Notice that
-	\begin{align*}
+		\end{align*}
+		this is, $(t, x)\in C$. Therefore $\mathcal{A}^+ \subset C$.	\\ \vspace{0.3cm}
+		
+		$(D = \{(t, x) : x \leq b(t)\})$\sidenote{Relies on $^xX_s^{T - t, z} \leq\ ^{x'}X_s^{T - t, z}$ for all $s\in [0, T - t]$ a.s. whenever $x \leq x'$, i.e. the process is decreasing with respect to the spacial initial condition.}\ \ Define $b(t) := \sup\{x : (t, x) \in D\}$. We have proved that $b(t) < A$ for all $t\in[0, T)$ and it is obvious that $b(T) = \min\{A, z\}$. On the other hand, due to $X_s^{t, x} \leq\ X_s^{t, x'}$ for all $s\in [0, T - t]$ $\Pr$-a.s. whenever $x \leq x'$, we can ensure that $D$ lies bellow the curve $b$. Moreover, since $D$ is closed, $(t, b(t)) \in D$ for all $t\in[0, T]$, which guarantees that $D$ has the claimed shape. \\  \vspace{0.3cm}
+		
+		$(\infty < b(t))$\ \ The from of the drift $\mu(t, x)$ of the OUB in \eqref{eq:OUB_drift} guarantees the existence of a function $u:[0, T] \rightarrow R$ such that $\mu(t, x) \geq 0$ for all $x \leq u(t)$ and $\mu(t, x) \leq 0$ for all $x \geq u(t)$. Define $m := \min_{t\in[0,T)}\{u(t)\}$. Notice that
+		\begin{align*}
 		X_t &\geq u(t) - \left|u(t) - X_t\right| \\
 		& \geq u(t) - \left|u(t) - \sigma B_t\right| \\
 		& \geq m - \left|m - \sigma B_t\right|,
-	\end{align*}  
-	where $B_t = X_0 + W_t$ and $\{W_t\}_{t\geq0}$ is the underlying standard Brownian motion in \eqref{eq:OUB_SDE}. The second inequality holds since the drift of the reflected (with respecto to $u$) OUB is always higher than the drift of the reflected (with respecto to $u$) Brownian motion, and therefore we can ensure that the first process is greater than the last one path-wise $\Pr$-a.s. (see \citet{ikeda1977}). The above inequalities guarantee that the value function \eqref{eq:OSP} is lower than the value function associated to a reflected (with respect to $m$) Brownian motion, and hence the respective OSBs hold the reverse inequality. On the other hand, it is easy to show that the OSB for the dsicounted OSP with the gain function $G$ and a reflected (with respect to $m$) Brownian motion is finite. Actually, one can obtain\sidenote{Done in Mathematica} explicitly the OSB, which is constant, by directly solving the associated free boundary problem. Therefore the OSB $b$ is also finite. 
+		\end{align*}  
+		where $B_t = X_0 + W_t$ and $\{W_t\}_{t\geq0}$ is the underlying standard Brownian motion in \eqref{eq:OUB_SDE}. The second inequality holds since the drift of the reflected (with respecto to $u$) OUB is always higher than the drift of the reflected (with respecto to $u$) Brownian motion, and therefore we can ensure that the first process is greater than the last one path-wise $\Pr$-a.s. (see \citet{ikeda1977}). The above inequalities guarantee that the value function \eqref{eq:OSP} is lower than the value function associated to a reflected (with respect to $m$) Brownian motion, and hence the respective OSBs hold the reverse inequality. On the other hand, it is easy to show that the OSB for the dsicounted OSP with the gain function $G$ and a reflected (with respect to $m$) Brownian motion is finite. Actually, one can obtain\sidenote{Done in Mathematica} explicitly the OSB, which is constant, by directly solving the associated free boundary problem. Therefore the OSB $b$ is also finite. 
 	\end{pf}
-
+	
 	\begin{pr}(Regularity of $V$)\label{pr:V_regularity}\\
 		The value function $V$ satisfies:
 		\begin{enumerate}[label=(\roman{*}), ref=(\textit{\roman{*}})]
@@ -219,16 +219,16 @@
 		$$
 		and
 		\begin{align}
-			&\E\left[\mathbb{1}(\tau^* > T - t - \varepsilon)\left(X_{\tau^*}^{t, x} - z\right)^-\right] \nonumber \\
-			&\leq \E\left[\sup_{0 \leq h\leq \varepsilon}\left|X_{T - t - h}^{t, x} - z\right|\right] \nonumber \\
-			&= \E\left[\sup_{0 \leq h\leq \varepsilon}h\left|\alpha^2\frac{\cosh(h')\left(x + \sigma\int_{0}^{T - t -h} \frac{\sinh(\alpha (T - t))}{\sinh(\alpha (T - t - u))}\,\mathrm{d}W_u\right) - z\cosh(h'')}{\sinh(\alpha (T - t))}\right|\right] \nonumber \\
-			&\leq \varepsilon L_{2, x, \delta} \nonumber
+		&\E\left[\mathbb{1}(\tau^* > T - t - \varepsilon)\left(X_{\tau^*}^{t, x} - z\right)^-\right] \nonumber \\
+		&\leq \E\left[\sup_{0 \leq h\leq \varepsilon}\left|X_{T - t - h}^{t, x} - z\right|\right] \nonumber \\
+		&= \E\left[\sup_{0 \leq h\leq \varepsilon}h\left|\alpha^2\frac{\cosh(h')\left(x + \sigma\int_{0}^{T - t -h} \frac{\sinh(\alpha (T - t))}{\sinh(\alpha (T - t - u))}\,\mathrm{d}W_u\right) - z\cosh(h'')}{\sinh(\alpha (T - t))}\right|\right] \nonumber \\
+		&\leq \varepsilon L_{2, x, \delta} \nonumber
 		\end{align}
 		where the equality results after considering \eqref{eq:OUB_rep_int} and applying the mean value theorem to get $h'$ and $h''$ such that they are both contained in $[-|\alpha|T, |\alpha|T]$. We then relied on the fact that $h \leq \varepsilon$ to come up with the bound in the last inequality, with
 		$$
 		L_{2, x, \delta} = \sup_{0\leq t \leq T - \delta}\E\left[\sup_{\substack{0 \leq h \leq T - t \\ 0 \leq h', h'' \leq |\alpha|T}}\left|\alpha^2\frac{\cosh(h')\left(x + \sigma\int_{0}^{T - t - h} \frac{\sinh(\alpha (T - t))}{\sinh(\alpha (T - t - u))}\,\mathrm{d}W_u\right) - z\cosh(h'')}{\sinh(\alpha (T - t))}\right|\right].
 		$$
-
+		
 		Now consider $\tau_\varepsilon = \tau^*(t - \varepsilon, x)$ for $0 \leq \varepsilon \leq t \leq T - \delta$, and notice that $\tau_\varepsilon\wedge(T - t)$ is admissible for $V(t, x)$. Then, argue as in \eqref{eq:Vt+eps-Vt>} to get
 		\begin{align*}
 		V(t, x) - V(t - \varepsilon, x)
@@ -257,7 +257,7 @@
 		&\leq  \varepsilon L_{1, x, \delta},
 		\end{align}
 		for some $t^{\varepsilon}\in(t, t + \varepsilon)$.
-	
+		
 		So far, as \sidenote{Trivial enough?} $L_{i, x, \delta} < \infty$ for $i =1, 2, 3$, we have proved that, for any $\varepsilon$ satisfying $|\varepsilon| \leq t \leq T - \delta$, there exists a constant $L_{x,\delta} < \infty$ such that
 		$$
 		|V(t + \varepsilon, x) - V(t, x)| \leq \varepsilon L_{x, \delta},
@@ -266,11 +266,11 @@
 		
 		Since $G(x)$ decreases and $X_s^{t, x}$ increases as $x$ grows for all $s\in[0, T - t)$, then $V(t, x)$ decreases on $x$ for all $t\in[0, T)$. Fix $(t, x)\in[0, T]\times\R$ and $\varepsilon > 0$. Consider $\tau^* = \tau^*(t, x)$, and combine \eqref{eq:OSP}, \eqref{eq:OST}, \eqref{eq:G_inequality}, and \eqref{eq:OUB_rep_int}, to get 
 		\begin{align}
-			0 \geq V(t, x + \varepsilon) - V(t, x) &\geq \E_{t, x + \varepsilon}\left[e^{-\lambda\tau^*}G(X_{t + \tau^*})\right] - \E_{t, x}\left[e^{-\lambda\tau^*}G(X_{t + \tau^*})\right] \nonumber \\
-			&= \E\left[e^{-\lambda\tau^*}\left(G(X_{\tau^*}^{t, x + \varepsilon}) - G(X_{\tau^*}^{t, x})\right)\right] \nonumber\\
-			&\geq -\E\left[e^{-\lambda\tau^*}\left(X_{\tau^*}^{t, x + \varepsilon} - X_{\tau^*}^{t, x}\right)^+\right] \nonumber\\
-			&= -\varepsilon\E\left[e^{-\lambda\tau^*}\frac{\sinh(\alpha (T - t - \tau^*))}{\sinh(\alpha (T - t))}\right] \label{eq:Vx+eps-Vx}  \\
-			&\geq -\varepsilon \nonumber
+		0 \geq V(t, x + \varepsilon) - V(t, x) &\geq \E_{t, x + \varepsilon}\left[e^{-\lambda\tau^*}G(X_{t + \tau^*})\right] - \E_{t, x}\left[e^{-\lambda\tau^*}G(X_{t + \tau^*})\right] \nonumber \\
+		&= \E\left[e^{-\lambda\tau^*}\left(G(X_{\tau^*}^{t, x + \varepsilon}) - G(X_{\tau^*}^{t, x})\right)\right] \nonumber\\
+		&\geq -\E\left[e^{-\lambda\tau^*}\left(X_{\tau^*}^{t, x + \varepsilon} - X_{\tau^*}^{t, x}\right)^+\right] \nonumber\\
+		&= -\varepsilon\E\left[e^{-\lambda\tau^*}\frac{\sinh(\alpha (T - t - \tau^*))}{\sinh(\alpha (T - t))}\right] \label{eq:Vx+eps-Vx}  \\
+		&\geq -\varepsilon \nonumber
 		\end{align}
 		Similar arguments with $\sigma_\varepsilon = \tau^*(t, x - \varepsilon)$ yield
 		\begin{align*}
@@ -278,11 +278,11 @@
 		\end{align*}
 		Then, $x\mapsto V(t, x)$ is Lipschitz continuous for all $t\in[0, T)$, which alongside the Lipschitz continuity of $t\mapsto V(t, x)$	in $[0, T - \delta]$ for all $0 < \delta < T$, allows us to conclude that $V$ is Lipschitz continuous on $[0, T - \delta]\times\R$, this is, for any $0 < \delta < T$ there exists $L_\delta$ such that
 		\begin{align*}
-			|V(t_1, x_1) - V(t_2, x_2)| \leq L_\delta(|t_1 - t_2| + |x_1 - x_2|),
+		|V(t_1, x_1) - V(t_2, x_2)| \leq L_\delta(|t_1 - t_2| + |x_1 - x_2|),
 		\end{align*} 
 		for all $(t_1, x_1), (t_2, x_2) \in [0, T - \delta]\times\R$.\\  \vspace{0.3cm}
 		
-
+		
 		\ref{pr:V_C^12onC}\sidenote{This part is valid whenever $V$ is continuous in $C$ and both $\mu$ and $\sigma$ are locally $\alpha$-Hölder continuous in $[0, T)\times\R$}\ \ The fact that $\partial_tV + \mathbb{L}_{X}V = \lambda V$  on $C$ comes right after the strong Markov property of $(t, X_t)$ (See \citet[Section 7.1]{goran-optimal} for more details).
 		
 		Also, since $V$ is continuous in $C$ (see \ref{pr:V_Lcontinuous}), $\mu$ in $\eqref{eq:OUB_drift}$ is locally $\alpha$-Hölder continuous in $[0, T)\times\R$, and $\sigma$ is constant, then, one can borrow standard result from parabolic PDE's theory (see \citet[Section 3, Theorem 9]{friedman1964partial}) to guarantee that, for an open rectangle $R\subset C$, the first initial-boundary value problem
@@ -295,7 +295,7 @@
 		
 		\ref{pr:V_x-V_t}\ \ As we have just proved in \ref{pr:V_C^12onC}, the partial derivatives of $V$ exist on $C$, and trivially they also exist on $D^{\circ}$ since $V = G$ on $D$. Therefore, for any $(t, x)\in [0, T)\times \R$ with $x\neq b(t)$, we can take $\varepsilon\rightarrow 0$ in \eqref{eq:Vt-Vt-eps<}, \eqref{eq:Vt+eps-Vt>}, and \eqref{eq:Vx+eps-Vx}, to derive equations \eqref{eq:Vt_up}, \eqref{eq:Vt_low}, and \eqref{eq:V_x} respectively.		
 	\end{pf}
-
+	
 	Consider now the OSP
 	\begin{align}\label{eq:OSP_eps}
 	V^{\varepsilon}(t, x) = \sup_{\tau \leq T - \varepsilon - t}\E_{t, x}\left[e^{-\lambda\tau}G(X_{t + \tau})\right],
@@ -303,29 +303,29 @@
 	this is, finding the optimal strategy just by taking into account the evolution of the process up until time $T - \varepsilon$.
 	
 	\begin{pr}(Convergence of $V^\varepsilon$) \\
-
+		
 	\end{pr}
-
+	
 	\begin{pf}
 		It is both intuitive and pretty easy to check that $V(t, x) \geq V^\varepsilon(t, x)$ for $(t, x) \in [0, T - \varepsilon]\times\R$. Let $\tau^* = \tau^*(t, x)$ be the OST for \eqref{eq:OSP} and notice that $\tau^*\wedge(T - \varepsilon - t)$ it is an admissible stopping time for \eqref{eq:OSP_eps}. Therefore, due to the martingale and supermartingale properties of the value functions $V$ and $V^{\varepsilon}$, we get
 		\begin{align*}
-			0 &\leq V(t, x) - V^\varepsilon(t, x) \\
-			&\leq \E_{t, x}\left[V(t + \tau^*, X_{t + \tau^*}) - V^\varepsilon(t + \tau^*\wedge(T - \varepsilon - t))\right] \\
-			&= \E_{t, x}\left[\mathbb{1}(\tau^* < T - \varepsilon - t)\left(V(t + \tau^*, X_{t + \tau^*}) - V^\varepsilon(t + \tau^*, X_{t + \tau^*})\right)\right] \\
-			&\ \ \ \ + \E_{t, x}\left[\mathbb{1}(\tau^* \geq T - \varepsilon - t)\left(V(t + \tau^*, X_{t + \tau^*}) - V^\varepsilon(T - \varepsilon, X_{T - \varepsilon})\right)\right] \\
-			&\leq \E_{t, x}\left[\mathbb{1}(\tau^* \geq T - \varepsilon - t)\left(V(t + \tau^*, X_{t + \tau^*}) - V^\varepsilon(T - \varepsilon, X_{T - \varepsilon})\right)\right] \\ 
-			&\leq \E_{t, x}\left[\mathbb{1}(\tau^* \geq T - \varepsilon - t)\left(G(X_{t + \tau^*}) - G(X_{T - \varepsilon})\right)\right] \\
-			&\leq \E_{t, x}\left[\mathbb{1}(\tau^* \geq T - \varepsilon - t)\left|X_{T - \varepsilon} - X_{t + \tau^*}\right|\right] \\
-			&= \E_{t, x}\left[\mathbb{1}(\tau^* \geq T - \varepsilon - t)\E_{t, x}\left[\left|X_{T - \varepsilon} - X_{t + \tau^*}\right|\Big|\mathcal{F}_{T - \varepsilon - t}\right]\right] \\
-			&= \E_{t, x}\left[\mathbb{1}(\tau^* \geq T - \varepsilon - t)\E_{T - \varepsilon, X_{T - \varepsilon}}\left[\left|X_{T - \varepsilon} - X_{T - \varepsilon + \rho^*}\right|\right]\right],
+		0 &\leq V(t, x) - V^\varepsilon(t, x) \\
+		&\leq \E_{t, x}\left[V(t + \tau^*, X_{t + \tau^*}) - V^\varepsilon(t + \tau^*\wedge(T - \varepsilon - t))\right] \\
+		&= \E_{t, x}\left[\mathbb{1}(\tau^* < T - \varepsilon - t)\left(V(t + \tau^*, X_{t + \tau^*}) - V^\varepsilon(t + \tau^*, X_{t + \tau^*})\right)\right] \\
+		&\ \ \ \ + \E_{t, x}\left[\mathbb{1}(\tau^* \geq T - \varepsilon - t)\left(V(t + \tau^*, X_{t + \tau^*}) - V^\varepsilon(T - \varepsilon, X_{T - \varepsilon})\right)\right] \\
+		&\leq \E_{t, x}\left[\mathbb{1}(\tau^* \geq T - \varepsilon - t)\left(V(t + \tau^*, X_{t + \tau^*}) - V^\varepsilon(T - \varepsilon, X_{T - \varepsilon})\right)\right] \\ 
+		&\leq \E_{t, x}\left[\mathbb{1}(\tau^* \geq T - \varepsilon - t)\left(G(X_{t + \tau^*}) - G(X_{T - \varepsilon})\right)\right] \\
+		&\leq \E_{t, x}\left[\mathbb{1}(\tau^* \geq T - \varepsilon - t)\left|X_{T - \varepsilon} - X_{t + \tau^*}\right|\right] \\
+		&= \E_{t, x}\left[\mathbb{1}(\tau^* \geq T - \varepsilon - t)\E_{t, x}\left[\left|X_{T - \varepsilon} - X_{t + \tau^*}\right|\Big|\mathcal{F}_{T - \varepsilon - t}\right]\right] \\
+		&= \E_{t, x}\left[\mathbb{1}(\tau^* \geq T - \varepsilon - t)\E_{T - \varepsilon, X_{T - \varepsilon}}\left[\left|X_{T - \varepsilon} - X_{T - \varepsilon + \rho^*}\right|\right]\right],
 		\end{align*}
 		where $\rho^* = \tau^*(T - \varepsilon, X_{T - \varepsilon})$. Notice that,
 		\begin{align*}
-			&\E\left[\left|X_{T - \varepsilon + \rho^*} - X_{T - \varepsilon}\right| \Big | X_{T - \varepsilon = x}\right] \\
-			&= \E\left[\left|X_{\rho^*}^{T - \varepsilon, x} - x\right|\right] \\
-			&= \E\left[\left|x\frac{\sinh(\alpha (\varepsilon - \rho^*)) - \sinh(\alpha \varepsilon)}{\sinh(\alpha \varepsilon)} + z\frac{\sinh(\alpha \rho^*)}{\sinh(\alpha \varepsilon)}\right.\right. \\
-			&\ \ \ \ \left.\left.+ \sigma\int_{0}^{\rho^*} \frac{\sinh(\alpha (\varepsilon - \rho^*))}{\sinh(\alpha (\varepsilon - u))}\,\mathrm{d}W_u\right|\right]
-			%&= \E\left[\left|\int_{0}^{\rho^*}\mu\left(T - \varepsilon + u, X^{T - \varepsilon, x}\right)\,\dif u\right|\right] + \E\left[\left|\int_{0}^{\rho^*}\sigma\left(T - \varepsilon + u, X^{T - \varepsilon, x}\right)\,\dif W_u\right|\right].
+		&\E\left[\left|X_{T - \varepsilon + \rho^*} - X_{T - \varepsilon}\right| \Big | X_{T - \varepsilon = x}\right] \\
+		&= \E\left[\left|X_{\rho^*}^{T - \varepsilon, x} - x\right|\right] \\
+		&= \E\left[\left|x\frac{\sinh(\alpha (\varepsilon - \rho^*)) - \sinh(\alpha \varepsilon)}{\sinh(\alpha \varepsilon)} + z\frac{\sinh(\alpha \rho^*)}{\sinh(\alpha \varepsilon)}\right.\right. \\
+		&\ \ \ \ \left.\left.+ \sigma\int_{0}^{\rho^*} \frac{\sinh(\alpha (\varepsilon - \rho^*))}{\sinh(\alpha (\varepsilon - u))}\,\mathrm{d}W_u\right|\right]
+		%&= \E\left[\left|\int_{0}^{\rho^*}\mu\left(T - \varepsilon + u, X^{T - \varepsilon, x}\right)\,\dif u\right|\right] + \E\left[\left|\int_{0}^{\rho^*}\sigma\left(T - \varepsilon + u, X^{T - \varepsilon, x}\right)\,\dif W_u\right|\right].
 		\end{align*}
 		...
 	\end{pf}
@@ -357,9 +357,8 @@
 	\begin{pf}
 		\ref{pr:V_Lcontinuous}\ \ \ Due to the martingale and super-martingale properties of $V^\varepsilon$, the fact that $V^\varepsilon \geq G$ on $[0, T)\times\R$ and $V^\varepsilon = G$ on $D^\varepsilon$, and inequality \eqref{eq:G_inequality}, one has the following for $0 < \delta \leq t$ and $\tau^* = \tau_\varepsilon^*(t, x)$, 
 		\begin{align}
-		V(t, x) - V(t - \delta, x) &\leq \E_{t, x}\left[V^\varepsilon(t + \tau^*, X_{t + \tau^*})\right] - \E_{t - \delta, x}\left[V^\varepsilon(t - \delta + \tau^*, X_{t + \tau^*})\right] \nonumber \\
-		&\leq \E_{t, x}\left[G(X_{t + \tau^*})\right] - \E_{t - \delta, x}\left[G(X_{t + \tau^*})\right] \nonumber \\
-		&= \E\left[G\left(X_{\tau^*}^{t, x}\right) - G\left(X_{\tau^*}^{t - \delta, x}\right)\right] \nonumber \\
+		V(t, x) - V(t - \delta, x) &\leq \E\left[V^\varepsilon(t + \tau^*, X_{\tau^*}^{t, x})\right] - \E_{t - \delta, x}\left[V^\varepsilon(t - \delta + \tau^*, X_{\tau^*}^{t - \delta, x})\right] \nonumber \\
+		&\leq \E\left[G\left(X_{\tau^*}^{t, x}\right) - G\left(X_{\tau^*}^{t - \delta, x}\right)\right] \nonumber \\
 		&\leq \E\left[\left(X_{\tau^*}^{t - \delta, x} - X_{\tau^*}^{t, x}\right)^+\right] \nonumber \\
 		&= \delta\E\left[\left(-\partial_tX_{\tau^*}^{t_\delta, x}\right)^+\right] \label{eq:V^epst-V^epst-delta<} \\
 		&\leq \delta L_{1, x, \varepsilon}, \nonumber
@@ -371,44 +370,52 @@
 		
 		On the other hand, considering $0 < \delta \leq T - \varepsilon - t$, using similar arguments as the ones held in \eqref{eq:V^epst-V^epst-delta<}, and noticing that $\tau^*\wedge(T - \varepsilon - t - \delta)$ is admissible for $V^\varepsilon(t - \delta, x)$, we get
 		\begin{align}
-		V^\varepsilon(t + \delta, x) - V^\varepsilon(t, x) &\geq \E_{t + \delta, x}\left[V^\varepsilon\left(t + \delta + \tau^*\wedge(T - \varepsilon - t - \delta), X_{t + \delta + \tau^*\wedge(T - \varepsilon - t - \delta)}\right)\right] - \E_{t, x}\left[V^\varepsilon\left(t + \tau^*, X_{t + \tau^*}\right)\right] \nonumber \\
-		&\geq \E_{t + \varepsilon, x}\left[G\left(X_{t + \delta + \tau^*\wedge(T - \varepsilon - t - \delta)}\right)\right] - \E_{t, x}\left[G\left(X_{t + \tau^*}\right)\right] \nonumber \\
-		&= \E\left[G\left(X_{\tau^*\wedge(T - \varepsilon - t - \delta)}^{t + \delta, x}\right) - G\left(X_{\tau^*}^{t, x}\right)\right] \nonumber \\
-		&\geq \E\left[-\left(X_{\tau^*}^{t, x} - X_{\tau^*\wedge(T - \varepsilon - t - \delta)}^{t + \delta, x}\right)^-\right] \nonumber \\
-		&= -\E\left[\mathbb{1}(\tau^*\leq T - \varepsilon - t - \delta)\left(X_{\tau^*}^{t, x} - X_{\tau^*}^{t + \delta, x}\right)^-\right] - \E\left[\mathbb{1}(\tau^* > T - \varepsilon - t - \delta)\left(X_{\tau^*}^{t, x} - X_{T - \varepsilon - t - \delta}^{t + \delta, x}\right)^-\right] \nonumber\\
+		V^\varepsilon(t + \delta, x) - V^\varepsilon(t, x) &\geq \E\left[V^\varepsilon\left(t + \delta + \tau^*\wedge(T - \varepsilon - t - \delta), X_{\tau^*\wedge(T - \varepsilon - t - \delta)}^{t + \delta, x}\right)\right] - \E\left[V^\varepsilon\left(t + \tau^*, X_{\tau^*}^{t, x}\right)\right] \nonumber \\
+		&= \E\left[\mathbb{1}(\tau^* \leq T - \varepsilon - t - \delta)\left(V^\varepsilon\left(t + \delta + \tau^*, X_{\tau^*}^{t + \delta, x}\right) - V^\varepsilon\left(t + \tau^*, X_{\tau^*}^{t, x}\right)\right)\right] \nonumber \\
+		&\ \ \ \ +\E\left[\mathbb{1}(\tau^* > T - \varepsilon - t - \delta)\left(V^\varepsilon\left(T - \varepsilon, X_{T - \varepsilon - t - \delta}^{t + \delta, x}\right) - V^\varepsilon\left(T - \varepsilon - \delta, X_{T - \varepsilon - t - \delta}^{t, x}\right)\right)\right] \nonumber \\
+		&\geq \E\left[\mathbb{1}(\tau^*\leq T - \varepsilon - t - \delta)\left(G\left(X_{\tau^*\wedge(T - \varepsilon - t - \delta)}^{t + \delta, x}\right) - G\left(X_{\tau^*}^{t, x}\right)\right)\right] \nonumber \\
+		&\ \ \ \ +\E\left[\mathbb{1}(\tau^* > T - \varepsilon - t - \delta)\left(G(X_{T - \varepsilon - t - \delta}^{t + \delta, x}) - V^{\varepsilon}(t + \tau^*, X_{\tau^*}^{t, x})\right)\right] \nonumber \\
 		&\geq -\E\left[\mathbb{1}(\tau^*\leq T - \varepsilon - t - \delta)\left(X_{\tau^*}^{t, x} - X_{\tau^*}^{t + \delta, x}\right)^-\right] \nonumber \\
-		&\ \ \ \ - \E\left[\mathbb{1}(\tau^* > T - \varepsilon - t - \delta)\left(X_{\tau^*}^{t, x} - X_{T - \varepsilon - t - \delta}^{t, x}\right)^-\right] \nonumber\\
-		&\ \ \ \ - \E\left[\mathbb{1}(\tau^* > T - \varepsilon - t - \delta)\left(X_{T - \varepsilon - t - \delta}^{t, x} - X_{T - \varepsilon - t - \delta}^{t + \delta, x}\right)^-\right].\label{eq:V^epst+delta-V^epst>}
+		&\ \ \ \ +\E\left[\mathbb{1}(\tau^* > T - \varepsilon - t - \delta)\left(G(X_{T - \varepsilon - t - \delta}^{t + \delta, x}) - V^{\varepsilon}(t + \tau^*, X_{\tau^*}^{t, x})\right)\right]. \label{eq:V^epst+delta-V^epst>}
 		\end{align}
 		Notice that
 		$$
-		\E\left[\mathbb{1}(\tau^*\leq T - \varepsilon - t - \delta)\left(X_{\tau^*}^{t, x} - X_{\tau^*}^{t + \delta, x}\right)^-\right] \leq \varepsilon L_{1, x, \varepsilon}.
+		\E\left[\mathbb{1}(\tau^*\leq T - \varepsilon - t - \delta)\left(X_{\tau^*}^{t, x} - X_{\tau^*}^{t + \delta, x}\right)^-\right] \leq \delta L_{1, x, \varepsilon}.
 		$$
-		Also,
+		Also, using the martingale property of $V^{\varepsilon}$,
 		\begin{align}
-			&\E\left[\mathbb{1}(\tau^* > T - t - \varepsilon - \delta)\left(X_{\tau^*}^{t, x} - X_{T - \varepsilon - t - \delta}^{t, x}\right)^-\right] \nonumber \\
-			&\leq \E\left[\sup_{0 \leq h\leq \delta}\left|X_{T - \varepsilon - t - h}^{t, x} - X_{T - \varepsilon - t - h}^{t, x}\right|\right] \nonumber \\
-			&= \E\left[\sup_{0 \leq h\leq \delta}\left|x\frac{\sinh(\alpha(\varepsilon + h)) - \sinh(\alpha(\varepsilon + \delta))}{\sinh(\alpha(T - t))} + z\frac{\sinh(\alpha(T - \varepsilon - t - h)) - \sinh(\alpha(T - \varepsilon - t - \delta))}{\sinh(\alpha(T - t))} \nonumber \right.\right.\\
-			&\hspace{1cm}+\left.\left. \int_{0}^{T - \varepsilon - t - \delta}\frac{\sinh(\alpha(\varepsilon + h)) - \sinh(\alpha(\varepsilon + \delta))}{\sinh(\alpha(T - t - u))}\,\dif W_u + \int_{T - \varepsilon - t - \delta}^{T - \varepsilon - t - h}\frac{\sinh(\alpha(\varepsilon + h))}{\sinh(\alpha(T - t - u))}\,\dif W_u\right|\right] \nonumber \\
-			&\leq \E\left[\sup_{0 \leq h\leq \delta}(\delta - h)\left|\alpha\frac{\cosh(h')\left(x + \int_{0}^{T - \varepsilon - t - \delta}\frac{\sinh(\alpha(T - t))}{\sinh(\alpha(T - t - u))}\dif W_u\right) + z\cosh(h'')}{\sinh(\alpha(T - t))}\right|\right] \nonumber \\
-			&\ \ \ \ + \E\left[\sup_{0 \leq h\leq \delta}\left|\int_{T - \varepsilon - t - \delta}^{T - \varepsilon - t - h}\frac{\sinh(\alpha(\varepsilon + h))}{\sinh(\alpha(T - t - u))}\,\dif W_u\right|\right] \nonumber \\
-			&\leq \varepsilon L_{2, x, \delta} \nonumber
+		&\E\left[\mathbb{1}(\tau^* > T - t - \varepsilon - \delta)\left(G(X_{T - \varepsilon - t - \delta}^{t + \delta, x}) - V^{\varepsilon}(t + \tau^*, X_{\tau^*}^{t, x})\right)\right] \nonumber \\
+		&= \E\left[\mathbb{1}(\tau^* > T - t - \varepsilon - \delta)\left(G(X_{T - \varepsilon - t - \delta}^{t + \delta, x}) - \E\left[V^{\varepsilon}(t + \tau^*, X_{\tau^*}^{t, x}) | \mathcal{F}_{T - \varepsilon - t - \delta}\right]\right)\right] \nonumber \\
+		&= \E\left[\mathbb{1}(\tau^* > T - t - \varepsilon - \delta)\left(G(X_{T - \varepsilon - t - \delta}^{t + \delta, x}) - V^{\varepsilon}(T - \varepsilon - \delta, X_{T - \varepsilon - t - \delta}^{t, x})\right)\right]. \label{eq:V^eps_Lcont_1}
 		\end{align}
-		Using the Cauchy-Schwartz inequality and the maximal upper inequality in Theorem 14.13 from \citet{schilling2012brownian}, we get the following,
-		\begin{align*}
-			\E\left[\sup_{0 \leq h\leq \delta}\left|\int_{T - \varepsilon - t - \delta}^{T - \varepsilon - t - h}{\sinh^{-1}(\alpha(T - t - u))}\,\dif W_u\right|\right] &\leq \left(\E\left[\sup_{0 \leq h\leq \delta}\left(\int_{T - \varepsilon - t - \delta}^{T - \varepsilon - t - h}{\sinh^{-1}(\alpha(T - t - u))}\,\dif W_u\right)^2\right]\right)^{1/2} \\
-			&\leq 2\left(\int_{T - \varepsilon - t - \delta}^{T - \varepsilon - t}{\sinh^{-2}(\alpha(T - t - u))}\,\dif u\right)^{1/2} \\
-			&= 2\alpha^{-1/2}\left(\coth(\alpha(\varepsilon + \delta)) - \coth(\alpha(\varepsilon + h))\right)^{1/2}
-		\end{align*}
-		ALTERNATIVE WAY 
-		\begin{align*}
-			V^\varepsilon(t + \delta, x) - V^\varepsilon(t, x) &\geq \E_{t + \delta, x}\left[V^\varepsilon\left(t + \delta + \tau^*\wedge(T - \varepsilon - t - \delta), X_{t + \delta + \tau^*\wedge(T - \varepsilon - t - \delta)}\right)\right] - \E_{t, x}\left[V^\varepsilon\left(t + \tau^*, X_{t + \tau^*}\right)\right] \nonumber \\
-			&= \E\left[\mathbb{1}(\tau^* \leq T - \varepsilon - t - \delta)\left(V^\varepsilon(t + \delta + \tau^*, X_{\tau^*}^{t + \delta, x}) - V^\varepsilon(t + \tau^*, X_{\tau^*}^{t, x})\right)\right] \nonumber \\
-			&\hspace{0.5cm} + \E\left[\mathbb{1}(\tau^* > T - \varepsilon - t - \delta)\left(V^\varepsilon(T - \varepsilon, X_{T - \varepsilon - t - \delta}^{t + \delta, x}) - V^\varepsilon(t + \tau^*, X_{\tau^*}^{t, x})\right)\right] \nonumber \\
-			&=
-		\end{align*}
+		By definition of $V^\varepsilon$ and using the Itô-Tanaka formula, we derive the following,
+		\begin{align}
+		&V^{\varepsilon}(T - \varepsilon - \delta, X_{T - \varepsilon - t - \delta}^{t, x}) \nonumber \\
+		&= \sup_{\tau \leq \delta}\E_{T - \varepsilon - \delta, X_{T - \varepsilon - t - \delta}^{t, x}}\left[e^{-\lambda\tau}G(X_{T - \varepsilon - \delta + \tau})\right] \nonumber \\
+		&= G(X_{T - \varepsilon - t - \delta}^{t, x}) - \sup_{\tau \leq \delta}\E_{T - \varepsilon - \delta, X_{T - \varepsilon - t - \delta}^{t, x}}\left[\int_{0}^{\tau}e^{-\lambda u}\mathbb{1}\left(X_{T - \varepsilon - \delta + u} < A\right)\left(A - X_{T - \varepsilon - \delta + u} + \mu(T - \varepsilon - \delta + u, X_{T - \varepsilon - \delta + u})\right)\,\dif u\right. \nonumber \\
+		&\hspace{6cm} \left. + \frac{1}{2}\int_{0}^{\tau}\mathbb{1}(X_{T - \varepsilon - \delta + u} = A)\,\dif l_u^A(X_{T - \varepsilon - \delta + \cdot}) \right] \nonumber \\
+		&\leq G(X_{T - \varepsilon - t - \delta}^{t, x}) + \E_{T - \varepsilon - \delta, X_{T - \varepsilon - t - \delta}^{t, x}}\left[\int_{0}^{\delta}\left|A - X_{T - \varepsilon - \delta + u} + \mu(T - \varepsilon - \delta + u, X_{T - \varepsilon - \delta + u})\right|\,\dif u\right] + \frac{1}{2}l_\delta^A(X_{T - \varepsilon - \delta + \cdot}) \nonumber \\
+		&\leq G(X_{T - \varepsilon - t - \delta}^{t, x}) + \E_{T - \varepsilon - \delta, X_{T - \varepsilon - t - \delta}^{t, x}}\left[\int_{0}^{\delta}M\left(1 + \left|X_{T - \varepsilon - \delta + u}\right|\right)\,\dif u\right] + \frac{\delta}{2} \nonumber \\
+		&\leq G(X_{T - \varepsilon - t - \delta}^{t, x}) + \delta L_{2, x, \varepsilon}, \label{eq:V^eps_Lcont_2}
+		\end{align}
+		where 
+		$$
+		L_{2, x, \varepsilon} = M\sup_{0\leq t\leq T - \varepsilon}\E_{T - \varepsilon - \delta, X_{T - \varepsilon - t - \delta}^{t, x}}\left[\sup_{t\leq s\leq T - \varepsilon}\left|X_{s}\right|\right] + \left(M + \frac{1}{2}\right),
+		$$
+		and $l_u^A(X)$ is the local time of the process $X$ at $A$ up to time $u$,
+		$$
+		l_u^A(X) = \lim_{h\downarrow 0} \int_{0}^{u}\mathbb{1}(A - h \leq X_u \leq A + h)\,\dif \langle X, X\rangle_u.
+		$$
+		Plugging \eqref{eq:V^eps_Lcont_2} into \eqref{eq:V^eps_Lcont_1}, we get
+		\begin{align}
+		&\E\left[\mathbb{1}(\tau^* > T - t - \varepsilon - \delta)\left(G(X_{T - \varepsilon - t - \delta}^{t + \delta, x}) - V^{\varepsilon}(t + \tau^*, X_{\tau^*}^{t, x})\right)\right] \nonumber \\
+		&\leq \E\left[\mathbb{1}(\tau^* > T - t - \varepsilon - \delta)\left(G(X_{T - \varepsilon - t - \delta}^{t + \delta, x}) - V^{\varepsilon}(T - \varepsilon - \delta, X_{T - \varepsilon - t - \delta}^{t, x})\right)\right] \nonumber \\
+		&= \E\left[\mathbb{1}(\tau^* > T - t - \varepsilon - \delta)\left(G(X_{T - \varepsilon - t - \delta}^{t + \delta, x}) - G(X_{T - \varepsilon - t - \delta}^{t, x})\right)\right] - \delta L_{2, x, \varepsilon} \nonumber \\ 
+		&\leq - \E\left[\mathbb{1}(\tau^* > T - t - \varepsilon - \delta)\left(X_{T - \varepsilon - t - \delta}^{t, x} - X_{T - \varepsilon - t - \delta}^{t + \delta, x}\right)^-\right] - \delta L_{2, x, \varepsilon} \nonumber \\ 
+		&\leq  \delta\left(L_{1, x, \varepsilon} - L_{2, x, \varepsilon}\right). \label{eq:V^eps_Lcont_3}
+		\end{align}
 	\end{pf}
-
+	
 	
 	\begin{pr}\label{pr:OSB_LC_OUB}
 		The OSB $b$ is Lipschitz continuous on $[0, T - \varepsilon]$ for any $0 < \varepsilon < T$.
@@ -431,16 +438,16 @@
 		&\geq -\alpha\frac{(A + |z|\cosh(\alpha T))}{\sinh(\alpha\varepsilon)}\frac{\E\left[\sinh(\alpha \tau_\delta)\right]}{\E\left[\sinh(\alpha(T - t)) - \sinh(\alpha (T - t - \tau_\delta))\right]} \nonumber \\
 		&\ \ \ \ -\alpha\sinh(\alpha T)\frac{\E\left[\left(M_{\tau_\delta}^t\right)^+\right]}{\E\left[\sinh(\alpha(T - t)) - \sinh(\alpha (T - t - \tau_\delta))\right]} \nonumber
 		\end{align}
-%		&= -\frac{\E\left[\left(\alpha^2\frac{\tau_\delta\cosh(\zeta_{1,\delta})(A + |z|\cosh(\alpha T))}{\sinh(\alpha(T - t))} + \alpha\sinh(\alpha(T - t))M_{\tau_\delta}^t\right)^+\right]}{\alpha\E\left[\tau_\delta\cosh(\zeta_{2,\delta})\right]} \nonumber \\
-%		&\geq -\frac{\E\left[\left(\alpha^2\frac{\tau_\delta\cosh(\alpha T)(A + |z|\cosh(\alpha T))}{\sinh(\alpha \varepsilon)} + \alpha\sinh(\alpha T) M_{\tau_\delta}^t\right)^+\right]}{\alpha\E\left[\tau_\delta\right]} \nonumber \\
-%		&\geq -L_{1,\varepsilon} \left(L_{1} + \frac{\E\left[\left(M_{\tau_\delta}^t \right)^+\right]}{\E\left[\tau_\delta\right]}\right) \label{eq:b_delta'>}
-%		\end{align}
+		%		&= -\frac{\E\left[\left(\alpha^2\frac{\tau_\delta\cosh(\zeta_{1,\delta})(A + |z|\cosh(\alpha T))}{\sinh(\alpha(T - t))} + \alpha\sinh(\alpha(T - t))M_{\tau_\delta}^t\right)^+\right]}{\alpha\E\left[\tau_\delta\cosh(\zeta_{2,\delta})\right]} \nonumber \\
+		%		&\geq -\frac{\E\left[\left(\alpha^2\frac{\tau_\delta\cosh(\alpha T)(A + |z|\cosh(\alpha T))}{\sinh(\alpha \varepsilon)} + \alpha\sinh(\alpha T) M_{\tau_\delta}^t\right)^+\right]}{\alpha\E\left[\tau_\delta\right]} \nonumber \\
+		%		&\geq -L_{1,\varepsilon} \left(L_{1} + \frac{\E\left[\left(M_{\tau_\delta}^t \right)^+\right]}{\E\left[\tau_\delta\right]}\right) \label{eq:b_delta'>}
+		%		\end{align}
 		where $M_s^t$ is given in \eqref{eq:Ms}.
 		
 		We can now apply the mean value theorem to the function $\sinh(t)$ to come up with random variables $\zeta_{1,\delta} \in (0, \alpha \tau_\delta)$ and $\zeta_{2,\delta} \in (\alpha(T - t - \tau_\delta), \alpha(T - t))$, such that
 		\begin{align}\label{eq:sinh_bound}
-			\frac{\E\left[\sinh(\alpha \tau_\delta)\right]}{\E\left[\sinh(\alpha(T - t)) - \sinh(\alpha (T - t - \tau_\delta))\right]} &= \frac{\E\left[\alpha\tau_\delta\cosh(\zeta_{1,\delta})\right]}{\E\left[\alpha\tau_\delta \cosh(\zeta_{2,\delta})\right]} \nonumber \\ 
-			&\leq \cosh(\alpha T).
+		\frac{\E\left[\sinh(\alpha \tau_\delta)\right]}{\E\left[\sinh(\alpha(T - t)) - \sinh(\alpha (T - t - \tau_\delta))\right]} &= \frac{\E\left[\alpha\tau_\delta\cosh(\zeta_{1,\delta})\right]}{\E\left[\alpha\tau_\delta \cosh(\zeta_{2,\delta})\right]} \nonumber \\ 
+		&\leq \cosh(\alpha T).
 		\end{align}
 		Also notice that, according to \eqref{eq:Ms}, $M_{\tau_\delta}^t$ admits the representation
 		\begin{align*}
@@ -449,29 +456,29 @@
 		\end{align*}
 		which can be used, alongside \eqref{eq:sinh_bound}, to derive the following bound
 		\begin{align}
-			&\frac{\E\left[\left(M_{\tau_\delta}^t\right)^+\right]}{\E\left[\sinh(\alpha(T - t)) - \sinh(\alpha (T - t - \tau_\delta))\right]} \nonumber \\ 
-			&\leq \cosh(\alpha T)\frac{\E\left[\sinh(\alpha\tau_\delta)\left(\int_{0}^{\tau_\delta}\frac{\cosh(\alpha u)}{\sinh^2(\alpha(T - t - u))}\,\dif W_u\right)^+\right]}{\E\left[\sinh(\alpha\tau_\delta)\right]} \label{eq:term1} \\
-			&\ \ \ \ +\cosh(\alpha T)\frac{\E\left[\cosh(\alpha\tau_\delta)\left(\int_{0}^{\tau_\delta}\frac{\sinh(\alpha u)}{\sinh^2(\alpha(T - t - u))}\,\dif W_u\right)^+\right]}{\E\left[\sinh(\alpha\tau_\delta)\right]}. \label{eq:term2}
+		&\frac{\E\left[\left(M_{\tau_\delta}^t\right)^+\right]}{\E\left[\sinh(\alpha(T - t)) - \sinh(\alpha (T - t - \tau_\delta))\right]} \nonumber \\ 
+		&\leq \cosh(\alpha T)\frac{\E\left[\sinh(\alpha\tau_\delta)\left(\int_{0}^{\tau_\delta}\frac{\cosh(\alpha u)}{\sinh^2(\alpha(T - t - u))}\,\dif W_u\right)^+\right]}{\E\left[\sinh(\alpha\tau_\delta)\right]} \label{eq:term1} \\
+		&\ \ \ \ +\cosh(\alpha T)\frac{\E\left[\cosh(\alpha\tau_\delta)\left(\int_{0}^{\tau_\delta}\frac{\sinh(\alpha u)}{\sinh^2(\alpha(T - t - u))}\,\dif W_u\right)^+\right]}{\E\left[\sinh(\alpha\tau_\delta)\right]}. \label{eq:term2}
 		\end{align}
 		We can find an upper bound for term \eqref{eq:term1} by using the fact that $(x)^+ \leq 1 + x^2$, for all $x\in \R$, as follows,
 		\begin{align*}
-			&\frac{\E\left[\sinh(\alpha\tau_\delta)\left(\int_{0}^{\tau_\delta}\frac{\cosh(\alpha u)}{\sinh^2(\alpha(T - t - u))}\,\dif W_u\right)^+\right]}{\E\left[\sinh(\alpha\tau_\delta)\right]} \\
-			&\leq \frac{\E\left[\sinh(\alpha\tau_\delta)\left(1 + \sup_{s\leq \tau_\delta}\left(\int_{0}^{s}\frac{\cosh(\alpha u)}{\sinh^2(\alpha(T - t - u))}\,\dif W_u\right)^2\right)\right]}{\E\left[\sinh(\alpha\tau_\delta)\right]} \\
-			&\leq 1 + \sinh(\alpha T)\frac{\E\left[\sup_{s\leq \tau_\delta}\left(\int_{0}^{s}\frac{\cosh(\alpha u)}{\sinh^2(\alpha(T - t - u))}\,\dif W_u\right)^2\right]}{\E\left[\sinh(\alpha\tau_\delta)\right]} \\
-			&\leq 1 + K_1\frac{\E\left[\int_{0}^{\tau_\delta}\frac{\cosh^2(\alpha u)}{\sinh^4(\alpha(T - t - u))}\,\dif u\right]}{\E\left[\sinh(\alpha\tau_\delta)\right]} \\
-			&\leq 1 + K_1\frac{\E\left[\tau_\delta\frac{\cosh^2(\alpha T)}{\sinh^4(\alpha(\varepsilon))}\right]}{\E\left[\sinh(\alpha\tau_\delta)\right]} \\
-			&= 1 + K_1\frac{\E\left[\tau_\delta\frac{\cosh^2(\alpha T)}{\sinh^4(\alpha(\varepsilon))}\right]}{\E\left[\alpha\tau_\delta\cosh(\zeta_{1,\delta})\right]} \\
-			&\leq 1 + K_1\frac{\cosh^2(\alpha T)}{\alpha\sinh^4(\alpha(\varepsilon))}.
+		&\frac{\E\left[\sinh(\alpha\tau_\delta)\left(\int_{0}^{\tau_\delta}\frac{\cosh(\alpha u)}{\sinh^2(\alpha(T - t - u))}\,\dif W_u\right)^+\right]}{\E\left[\sinh(\alpha\tau_\delta)\right]} \\
+		&\leq \frac{\E\left[\sinh(\alpha\tau_\delta)\left(1 + \sup_{s\leq \tau_\delta}\left(\int_{0}^{s}\frac{\cosh(\alpha u)}{\sinh^2(\alpha(T - t - u))}\,\dif W_u\right)^2\right)\right]}{\E\left[\sinh(\alpha\tau_\delta)\right]} \\
+		&\leq 1 + \sinh(\alpha T)\frac{\E\left[\sup_{s\leq \tau_\delta}\left(\int_{0}^{s}\frac{\cosh(\alpha u)}{\sinh^2(\alpha(T - t - u))}\,\dif W_u\right)^2\right]}{\E\left[\sinh(\alpha\tau_\delta)\right]} \\
+		&\leq 1 + K_1\frac{\E\left[\int_{0}^{\tau_\delta}\frac{\cosh^2(\alpha u)}{\sinh^4(\alpha(T - t - u))}\,\dif u\right]}{\E\left[\sinh(\alpha\tau_\delta)\right]} \\
+		&\leq 1 + K_1\frac{\E\left[\tau_\delta\frac{\cosh^2(\alpha T)}{\sinh^4(\alpha(\varepsilon))}\right]}{\E\left[\sinh(\alpha\tau_\delta)\right]} \\
+		&= 1 + K_1\frac{\E\left[\tau_\delta\frac{\cosh^2(\alpha T)}{\sinh^4(\alpha(\varepsilon))}\right]}{\E\left[\alpha\tau_\delta\cosh(\zeta_{1,\delta})\right]} \\
+		&\leq 1 + K_1\frac{\cosh^2(\alpha T)}{\alpha\sinh^4(\alpha(\varepsilon))}.
 		\end{align*}
 		From some positive constant $K_1$ coming after applying the Burkholder-Davis-Gundy inequality (see \citet[Corollary 4.2]{revuz_continuous_1999}).
 		
 		Similar arguments yield an upper bound for term \eqref{eq:term2},
 		\begin{align*}
-			&\frac{\E\left[\cosh(\alpha\tau_\delta)\left(\int_{0}^{\tau_\delta}\frac{\sinh(\alpha u)}{\sinh^2(\alpha(T - t - u))}\,\dif W_u\right)^+\right]}{\E\left[\sinh(\alpha\tau_\delta)\right]} \\
-			&\leq \cosh(\alpha T)\frac{\E\left[\sup_{s\leq \tau_\delta}\left|\int_{0}^{s}\frac{\sinh(\alpha u)}{\sinh^2(\alpha(T - t - u))}\,\dif W_u\right|\right]}{\E\left[\sinh(\alpha\tau_\delta)\right]} \\
-			&\leq K_2\cosh(\alpha T)\frac{\E\left[\left(\int_{0}^{\tau_\delta}\frac{\sinh^2(\alpha u)}{\sinh^4(\alpha(T - t - u))}\,\dif u\right)^{1/2}\right]}{\E\left[\sinh(\alpha\tau_\delta)\right]} \\
-			&\leq K_2\frac{\cosh(\alpha T)}{\sinh^2(\alpha\varepsilon)}\frac{\E\left[\sqrt{\tau_\delta}\sinh(\alpha \tau_\delta)\right]}{\E\left[\sinh(\alpha\tau_\delta)\right]} \\
-			&\leq K_2\sqrt{T}\frac{\cosh(\alpha T)}{\sinh^2(\alpha\varepsilon)}
+		&\frac{\E\left[\cosh(\alpha\tau_\delta)\left(\int_{0}^{\tau_\delta}\frac{\sinh(\alpha u)}{\sinh^2(\alpha(T - t - u))}\,\dif W_u\right)^+\right]}{\E\left[\sinh(\alpha\tau_\delta)\right]} \\
+		&\leq \cosh(\alpha T)\frac{\E\left[\sup_{s\leq \tau_\delta}\left|\int_{0}^{s}\frac{\sinh(\alpha u)}{\sinh^2(\alpha(T - t - u))}\,\dif W_u\right|\right]}{\E\left[\sinh(\alpha\tau_\delta)\right]} \\
+		&\leq K_2\cosh(\alpha T)\frac{\E\left[\left(\int_{0}^{\tau_\delta}\frac{\sinh^2(\alpha u)}{\sinh^4(\alpha(T - t - u))}\,\dif u\right)^{1/2}\right]}{\E\left[\sinh(\alpha\tau_\delta)\right]} \\
+		&\leq K_2\frac{\cosh(\alpha T)}{\sinh^2(\alpha\varepsilon)}\frac{\E\left[\sqrt{\tau_\delta}\sinh(\alpha \tau_\delta)\right]}{\E\left[\sinh(\alpha\tau_\delta)\right]} \\
+		&\leq K_2\sqrt{T}\frac{\cosh(\alpha T)}{\sinh^2(\alpha\varepsilon)}
 		\end{align*}
 		for a positive constant $K_2$.
 		
@@ -481,19 +488,19 @@
 		
 		
 		
-
 		
 		
 		
 		
-%		
-%		Notice that, since $x^+ \leq 1 + x^2$ for all $x\in \R$, then
-%		\begin{align*}
-%			\E\left[\left(M_{\tau_\delta}^t\right)^+\right] &\leq 1 + \E\left[\left(M_{\tau_\delta}^t\right)^2\right] \\
-%			&\leq 1 + \E\left[\sup_{s\leq \tau_\delta}\left(M_s^t\right)^2\right] \\
-%			&\leq L_\varepsilon\left(1 + \E\left[\int_0^{\tau_\delta} \frac{\sinh^{2}(\alpha(\tau_\delta - s))}{\sinh^{4}(\alpha(T - t - s))} \dif s\right]\right),
-%		\end{align*}
-%		where the last inequality comes after the Burkholder-Davis-Gundy inequality (see \citet[Corollary 4.2]{revuz_continuous_1999})
+		
+		%		
+		%		Notice that, since $x^+ \leq 1 + x^2$ for all $x\in \R$, then
+		%		\begin{align*}
+		%			\E\left[\left(M_{\tau_\delta}^t\right)^+\right] &\leq 1 + \E\left[\left(M_{\tau_\delta}^t\right)^2\right] \\
+		%			&\leq 1 + \E\left[\sup_{s\leq \tau_\delta}\left(M_s^t\right)^2\right] \\
+		%			&\leq L_\varepsilon\left(1 + \E\left[\int_0^{\tau_\delta} \frac{\sinh^{2}(\alpha(\tau_\delta - s))}{\sinh^{4}(\alpha(T - t - s))} \dif s\right]\right),
+		%		\end{align*}
+		%		where the last inequality comes after the Burkholder-Davis-Gundy inequality (see \citet[Corollary 4.2]{revuz_continuous_1999})
 		
 		On the other hand, using now \eqref{eq:Vt_low} and following similar arguments we get
 		%		\begin{align}
@@ -518,12 +525,12 @@
 		&\leq \frac{\E\left[\mathbb{1}(\tau^* = T - t)\left(\alpha(\inf_{0\leq s\leq T}b(s) + \inf_{0\leq t\leq T}N^t - |z|)\right)^-\right]}{\varepsilon\E\left[\mathbb{1}(\tau^* = T-t)\right]}.
 		\end{align*}
 	\end{pf} 	
-
-
+	
+	
 	\begin{pr}(Smooth fit condition)\label{pr:smooth.fit}
 		The smooth fit condition holds, i.e., $\partial_xV(t,b(t)) = -1$ for all $t\in[0,T)$. 
 	\end{pr}
-
+	
 	\begin{pf}
 		\sidenote{\textcolor{red}{OUB:} $\partial_x^+V(t, b(t)) \leq -1$ relies on the integral representation (\ref{eq:OUB_rep_int}) of the OUB.}\ \ Take a point $(t, b(t))$ for some $t\in[0, T)$ and consider $\varepsilon > 0$. Since $(t, b(t)) \in D$ and $(t, b(t) + \varepsilon) \in C$, we get that $\varepsilon^{-1}(V(t, b(t) + \varepsilon) - V(t, b(t))) \geq \varepsilon^{-1}(G(b(t) + \varepsilon) - G(b(t))) = -1$. Therefore $\partial_x^+V(t, b(t)) \geq -1$. 
 		
@@ -532,19 +539,19 @@
 		\varepsilon^{-1}(V(t, b(t) + \varepsilon) - V(t, b(t))) \leq -\E\left[e^{-\lambda\tau_\varepsilon}\frac{\sinh(\alpha (T - t - \tau_\varepsilon))}{\sinh(\alpha (T - t))}\right],
 		\end{align*}
 		where $\tau_\varepsilon = \tau^*(t, b(t) + \varepsilon)$. Since the expression inside the expectation is lower than $1$ for all $\varepsilon$, we can use the dominated convergence theorem in the above inequality to get
-		 \begin{align}
-		 \partial_x^+V(t, b(t)) \leq -\E\left[e^{-\lambda\tau_0}\frac{\sinh(\alpha (T - t - \tau_0))}{\sinh(\alpha (T - t))}\right],
-		 \end{align}
+		\begin{align}
+		\partial_x^+V(t, b(t)) \leq -\E\left[e^{-\lambda\tau_0}\frac{\sinh(\alpha (T - t - \tau_0))}{\sinh(\alpha (T - t))}\right],
+		\end{align}
 		with\sidenote{$\tau_0$ exists and it is greater than $\tau^*(t, b(t))$ since the sequence ${\tau_\varepsilon}$ is decreasing w.r.t. $\varepsilon$} $\tau_0 := \lim_{\varepsilon\rightarrow0} \tau_\varepsilon$. Since $b$ is continuous and piecewise monotone ($b$ is proven to be Lipschitz continuous in Proposition \ref{pr:OSB_LC_OUB}) we can guarantee that $\tau_0 = \tau^{*}(t, b(t)) = 0\ \Pr$-a.s. (see \citet{cox_embedding_2015}[Corollary 8]), and therefore $\partial_x^+V(t, b(t)) \leq -1$.
-			
+		
 		Finally, the smooth fit condition comes after realizing that $\partial_x^-V(t, b(t)) = -1$ since $V = G$ on $D$.   
 	\end{pf}
-
+	
 	\section{The early exercise premium and the free-boundary equation}
 	
 	Propositions \ref{pr:boundary_existence}, \ref{pr:V_regularity}, \ref{pr:OSB_LC_OUB}, and \ref{pr:smooth.fit}, allow us to apply an extension of the Itô's formula (see \citet{d2020discounted}[Lemma A2]) to $e^{-\lambda s}V(t + s, X_{t + s})$, which, after setting $s = T - t$, taking $\Pr_{t, x}$-expectation, and shifting the integrating variable $t$ units, yields
 	\begin{align}\label{eq:V_after_Ito}
-		V(t, x) = e^{-\lambda (T - t)}G(z) - \int_{t}^{T}\E_{t, x}\left[e^{-\lambda (u - t)}(\partial_t V + \mathbb{L} V - \lambda V)(u,\ X_u)\right]\,\mathrm{d}u,
+	V(t, x) = e^{-\lambda (T - t)}G(z) - \int_{t}^{T}\E_{t, x}\left[e^{-\lambda (u - t)}(\partial_t V + \mathbb{L} V - \lambda V)(u,\ X_u)\right]\,\mathrm{d}u,
 	\end{align} 
 	where the martingale term is vanished after taking $\Pr_{t, x}$-expectation and the local time term does not appear due to the smooth fit condition. Recall that $\partial_t V + \mathbb{L} V = \lambda V$ on $C$ and $V = G$ on $D$. Therefore, (\ref{eq:V_after_Ito}) turns into the pricing formula
 	\begin{equation}\label{eq:early_excersice_premium}
@@ -557,33 +564,33 @@
 	%The first term of the right hand sum stands for the price of the European put option written on the same asset and expiring on the same date. The second term, called the \textit{early exercise premium}, represents the cost of having the added flexibility of exercising any time before $T$.  
 	Equation (\ref{eq:early_excersice_premium}) can be simplified by using $\E_{t, x}[X_u\mathbb{1}(X_u\leq a)] = \E_{t, x}[X_u|X_u\leq a]\Pr_{t, x}(X_u \leq a)$ and noticing that, since $X_u\sim\mathcal{N}(\nu_u(t, x), \gamma_u^2(t)))$ under $\Pr_{t, x}$, with
 	\begin{align}
-		\nu_u(t, x) &= \frac{x\sinh(\alpha (T - u)) + z\sinh(\alpha (u - t))}{\sinh(\alpha (T - t))}, \label{eq:mean_Xu}\\
-		\gamma_u^2(t) &= \frac{\sigma^2}{\alpha}\frac{\sinh(\alpha (u - t))\sinh(\alpha (T - u))}{\sinh(\alpha (T - t))} \label{eq:var_Xu}.
+	\nu_u(t, x) &= \frac{x\sinh(\alpha (T - u)) + z\sinh(\alpha (u - t))}{\sinh(\alpha (T - t))}, \label{eq:mean_Xu}\\
+	\gamma_u^2(t) &= \frac{\sigma^2}{\alpha}\frac{\sinh(\alpha (u - t))\sinh(\alpha (T - u))}{\sinh(\alpha (T - t))} \label{eq:var_Xu}.
 	\end{align}
 	Then $\E_{t, x}[X_u | X_u \leq a] = \nu_u(t, x) - \gamma_u(t)\frac{\phi(\hat{a})}{\Phi(\hat{a})}$, where $\phi$ and $\Phi$ are the density and distribution of a standard normal random variable, and $\hat{a} = \frac{a - \nu_u(t, x)}{\gamma_u(t)}$. We thereby end up with the pricing formula
 	\begin{align}\label{eq:pricing_formula}
-		V(t, x) = e^{-\lambda (T - t)}(A - z)^+ - \int_{t}^{T}e^{-\lambda (u - t)}K_{\alpha, \sigma, \lambda}(t, x, u, b(u))\,\mathrm{d}u,
+	V(t, x) = e^{-\lambda (T - t)}(A - z)^+ - \int_{t}^{T}e^{-\lambda (u - t)}K_{\alpha, \sigma, \lambda}(t, x, u, b(u))\,\mathrm{d}u,
 	\end{align}
 	where
 	\begin{align}\label{eq:kernel}
-		&K_{\alpha, \sigma, \lambda}(t_1, x_1, t_2, x_2) \nonumber \\
-		&=\left(\alpha\coth(\alpha(T - t_2)) + \lambda\right)\left(\nu_{t_2}(t_1, x_1)\Phi\left(y_{\alpha, \sigma}(t_1, x_1, t_2, x_2)\right) - \gamma_{t_2}(t_1)\phi(y_{\alpha, \sigma}(t_1, x_1, t_2, x_2))\right) \nonumber \\
-		&\ \ \ \ - \left(\frac{z\alpha}{\sinh(\alpha(T - t_2))} + \lambda A\right)\Phi\left(y_{\alpha, \sigma}(t_1, x_1, t_2, x_2)\right),
+	&K_{\alpha, \sigma, \lambda}(t_1, x_1, t_2, x_2) \nonumber \\
+	&=\left(\alpha\coth(\alpha(T - t_2)) + \lambda\right)\left(\nu_{t_2}(t_1, x_1)\Phi\left(y_{\alpha, \sigma}(t_1, x_1, t_2, x_2)\right) - \gamma_{t_2}(t_1)\phi(y_{\alpha, \sigma}(t_1, x_1, t_2, x_2))\right) \nonumber \\
+	&\ \ \ \ - \left(\frac{z\alpha}{\sinh(\alpha(T - t_2))} + \lambda A\right)\Phi\left(y_{\alpha, \sigma}(t_1, x_1, t_2, x_2)\right),
 	\end{align}
 	with
 	\begin{align*}
-		y_{\alpha, \sigma}(t_1, x_1, t_2, x_2) = \frac{x_2 - \nu_{t_2}(t_1, x_1)}{\gamma_{t_2}(t_1)}.
+	y_{\alpha, \sigma}(t_1, x_1, t_2, x_2) = \frac{x_2 - \nu_{t_2}(t_1, x_1)}{\gamma_{t_2}(t_1)}.
 	\end{align*}
 	Finally, by taking $x \uparrow b(t)$ in (\ref{eq:pricing_formula}) we derive the free-boundary equation
 	\begin{align}\label{eq:free-boundary_equation}
-		b(t) = A - e^{-\lambda (T - t)}(A - z)^+ + \int_{t}^{T}e^{-\lambda (u - t)}K_{\alpha, \sigma, \lambda}(t, b(t), u, b(u))\,\mathrm{d}u.
+	b(t) = A - e^{-\lambda (T - t)}(A - z)^+ + \int_{t}^{T}e^{-\lambda (u - t)}K_{\alpha, \sigma, \lambda}(t, b(t), u, b(u))\,\mathrm{d}u.
 	\end{align}
 	
 	\if\uniqtheo1
 	\begin{thm}
 		The integral equation (\ref{eq:free-boundary_equation}) has unique solution among the class of continuous functions, $c:[0, T]\mapsto (-\infty, A]$, of bounded variation.
 	\end{thm}
-
+	
 	\begin{pf}
 		% Initializations and x -> V^c(t,x) is twice continuously differentiable
 		
@@ -723,18 +730,18 @@
 	\begin{rmk}
 		Denote by $X(\alpha)$ the process in \eqref{eq:OUB_SDE} to emphasize its dependence on $\alpha$. Let $X(0) = \{X_t(0)\}_{t\geq0}^T$ be the $\Pr_{t, x}$-a.s. limit of $X_t(\alpha)$ when $\alpha\rightarrow 0$. According to \eqref{eq:OUB_rep_int}, $X(0)$ is not only well defined, but also distributes like a Brownian bridge\sidenote{1. Could we obtain the same result from the drift convergence in \eqref{eq:OUB_SDE}?\\ 2. I am assuming the limit and the stochastic integral are interchangeable.}. Define $\partial_\alpha X_t(\alpha)$ as the $\Pr_{t, x}$-a.s. limit
 		\begin{align*}
-			\partial_\alpha X_t(\alpha) := \lim_{h\rightarrow 0}h^{-1}(X_s^{t, x}(\alpha + h) - X_s^{t, x}(\alpha)).
+		\partial_\alpha X_t(\alpha) := \lim_{h\rightarrow 0}h^{-1}(X_s^{t, x}(\alpha + h) - X_s^{t, x}(\alpha)).
 		\end{align*} 
 		Directly taking the derivative with respect to $\alpha$ in \eqref{eq:OUB_rep_int}, and noticing that derivating inside the stochastic integral term is allowed since\sidenote{Argument missing!} BLABLABLA, we get the formula
 		\begin{align*}
-			\partial_\alpha X_{t}(\alpha) &= x\partial_\alpha f(\alpha, T - t, T) + z\partial_\alpha f(\alpha, t, T) \\ &\ \ \ \ + \sigma\int_{0}^{t}\partial_\alpha f(\alpha, T - t, T - u)\,\dif W_u,
+		\partial_\alpha X_{t}(\alpha) &= x\partial_\alpha f(\alpha, T - t, T) + z\partial_\alpha f(\alpha, t, T) \\ &\ \ \ \ + \sigma\int_{0}^{t}\partial_\alpha f(\alpha, T - t, T - u)\,\dif W_u,
 		\end{align*}
 		where $f(\alpha, s_1, s_2) = \sinh(\alpha s_1)/\sinh(\alpha s_2)$. Name $V_\alpha$ and $V_0$ the value functions associated to $X^{t, x}(\alpha)$ and $X^{t, x}(0)$ respectively, with the gain $G(x) = (A - x)^+$, and let $\tau_\alpha^* = \tau^{*}(t, x)$ be the OST for $V_\alpha(t, x)$ which is sub-optimal for $V_0(t, x)$. Then, use properties \eqref{eq:V_martingale} and \eqref{eq:V_supermartingale} alongside to inequality \eqref{eq:G_inequality} to get
 		\begin{align*}
-			V_\alpha(t, x) - V_0(t, x) &\leq \E_{t, x}\left[V_\alpha\left(t + \tau_\alpha^*, X_{t + \tau_\alpha^*}(\alpha)\right)\right] - \E\left[V\left(t + \tau_\alpha^*, X_{t + \tau_\alpha^*}(0)\right)\right] \\
-			&\leq \E_{t, x}\left[G\left(X_{t + \tau_\alpha^*}(\alpha)\right)\right] - \E\left[G\left(X_{t + \tau_\alpha^*}(0)\right)\right] \\
-			&\leq \E_{t, x}\left[\left(X_{t + \tau_\alpha^*}(0) - X_{t + \tau_\alpha^*}(\alpha)\right)^+\right] \\
-			&= \E_{t, x}\left[\left(-\alpha\partial_\alpha X_{t + \tau_\alpha^*}(\alpha')\right)^+\right].
+		V_\alpha(t, x) - V_0(t, x) &\leq \E_{t, x}\left[V_\alpha\left(t + \tau_\alpha^*, X_{t + \tau_\alpha^*}(\alpha)\right)\right] - \E\left[V\left(t + \tau_\alpha^*, X_{t + \tau_\alpha^*}(0)\right)\right] \\
+		&\leq \E_{t, x}\left[G\left(X_{t + \tau_\alpha^*}(\alpha)\right)\right] - \E\left[G\left(X_{t + \tau_\alpha^*}(0)\right)\right] \\
+		&\leq \E_{t, x}\left[\left(X_{t + \tau_\alpha^*}(0) - X_{t + \tau_\alpha^*}(\alpha)\right)^+\right] \\
+		&= \E_{t, x}\left[\left(-\alpha\partial_\alpha X_{t + \tau_\alpha^*}(\alpha')\right)^+\right].
 		\end{align*} 
 		for some $\alpha'\in(\min\{\alpha, 0\}, \max\{\alpha, 0\})$. It is easy to check that $\partial_\alpha f(\alpha, s_1, s_2) \rightarrow 0$ as $\alpha \rightarrow 0$ for all $s_1, s_2$, which alongside the continuity of $\alpha \rightarrow \partial_\alpha f(\alpha, s_1, s_2)$ guarantees that we can use the dominated convergence theorem to pass the limit when $\alpha\rightarrow 0$ inside the expected value to get $\lim_{\alpha\rightarrow 0}V_\alpha \leq V_0$. Following similar arguments but working with $\tau_0^*$ instead of $\tau_\alpha^*$, where $\tau_0^*$ is the OSP for $V_0(t, x)$, we can deduce the reverse inequality $\lim_{\alpha\rightarrow 0}V_\alpha \geq V_0$, meaning that $\lim_{\alpha\rightarrow 0}V_\alpha = V_0$ and consequently $b_ \alpha \rightarrow b_0$ when $\alpha \rightarrow 0$, where $b_ \alpha$ and $b_0$ are the OSB for $V_\alpha$ and $V_0$ respectively.
 		
@@ -744,7 +751,7 @@
 	\begin{thm}
 		Let $X = \{X_t\}_{t\geq 0}^T$ be a solution of the SDE
 		\begin{align*}
-			\dif X_t = \mu(t, X_t)\,\dif t + \sigma\,\dif W_t
+		\dif X_t = \mu(t, X_t)\,\dif t + \sigma\,\dif W_t
 		\end{align*}
 		with infinitesimal generator $\InfGen$ such that
 		$$
@@ -752,145 +759,145 @@
 		$$
 		Let $V(t, x)$ be the value function
 		\begin{align}\label{eq:OST_general}
-			V(t, x) = \sup_{0\leq \tau \leq T - t}\E\left[e^{-\lambda \tau}G(X_{t + \tau})\right]
+		V(t, x) = \sup_{0\leq \tau \leq T - t}\E\left[e^{-\lambda \tau}G(X_{t + \tau})\right]
 		\end{align}
 		with gain function $G(x) = (A - x)$. Assume that the following formulas are valid,
 		\begin{align}\label{eq:pricing_formula_general}
-			V(t, x) = e^{-\lambda (T - t)}\E_{t, x}[G(X_T)] - \int_{t}^{T}\E_{t, x}[(\InfGen G)\mathbf{1}_{(-\infty, b(u))}(X_u)\,\dif u], 
+		V(t, x) = e^{-\lambda (T - t)}\E_{t, x}[G(X_T)] - \int_{t}^{T}\E_{t, x}[(\InfGen G)\mathbf{1}_{(-\infty, b(u))}(X_u)\,\dif u], 
 		\end{align}
 		and
 		\begin{align}\label{eq:free-boundary_equation_general}
-			b(t) = A - e^{-\lambda (T - t)}\E_{t, x}[G(X_T)] + \int_{t}^{T}\E_{t, b(t)}[(\InfGen G)\mathbf{1}_{(-\infty, b(u))}(X_u)\,\dif u],
+		b(t) = A - e^{-\lambda (T - t)}\E_{t, x}[G(X_T)] + \int_{t}^{T}\E_{t, b(t)}[(\InfGen G)\mathbf{1}_{(-\infty, b(u))}(X_u)\,\dif u],
 		\end{align}
 		where $b$ is the corresponding optimal stopping boundary. Then, equation \eqref{eq:free-boundary_equation_general} has a unique solution among the class of continuous functions, $c:[0, T]\mapsto (-\infty, A]$, of bounded variation.  	
 	\end{thm}
-
+	
 	\begin{pf}
-
-			% Initializations and x -> V^c(t,x) is twice continuously differentiable
-			
-			Assume we have a function $c:[0,T]\rightarrow \mathbb{R}$ that solves \eqref{eq:free-boundary_equation_general} and define $V^c$ as in \eqref{eq:pricing_formula_general} but with $b$ replaced by $c$. It turns out that \red{the integrand in \eqref{eq:pricing_formula_general} is twice continuously differentiable} with respect to $x$, and therefore we can obtain $\partial_x V^c$ and $\partial_{xx} V^c$, and guarantee their continuity on $[0, T]\times R$, by differentiating inside the integral symbol.
-			
-			% Infinitesimal of X acting on V^c
-			
-%			It is easy to check that $\partial_t V^c(t, x) + \mathbb{L}V^c(t, x) = \lambda V^c(t, x) - \left(\left(\alpha\coth(\alpha(T - u)) + \lambda\right)\ x - \frac{z\alpha}{\sinh(\alpha(T - t))} - \lambda A \right)\mathbb{1}\left(x\leq c(t)\right)$, which, alongside the fact that $V^c$, $\partial_x V^c$ and $\partial_{xx} V^c$ are continuous on $[0, T]\times \R$, we get the continuity of $\partial_t V^c$ on $C_1 \cup C_2$, where
-%			\begin{align*}
-%			C_{1} := \{(t,x) \in [0,T) \times \mathbb{R} : x > c(t)\},\ \ 
-%			C_{2} := \{(t,x) \in [0,T) \times \mathbb{R} : x < c(t)\}.
-%			\end{align*}
-%			
-%			% Itô's Formula for F
-%			
-%			Define the function $F^{(t)}(s, x) := e^{-\lambda s}V^{c}(t + s, x)$ with $s\in[0, T-t)$, $x\in\mathbb{R}$, and consider %the sets
-%			\begin{align*}
-%			C_{1}^t := \{(s,x) \in C_1 : t \leq s < T \},\ \ 
-%			C_{2}^t := \{(s,x) \in C_2 : t \leq s < T \}.
-%			\end{align*}
-%			
-%			Notice that $F^{(t)}$ satisfies the hypothesis of \citet{d2020discounted}[Lemma A2] with $C = C_1^t$ and $D^{\circ} = C_2^t$: $F^{(t)}$, $\partial_xF^{(t)}$, and $\partial_{x^2}F^{(t)}$ are continuous on $[0, T)\R$; it has been proved that $F^{(t)}$ is $\mathcal{C}^{1,2}$ on $C_1^t$ and $C_2^t$; we are assuming that $c$ is a continuous function of bounded variation; and $(\partial_tF^{(t)} + \mathbb{L}_X F^{(t)})(s, x) = -e^{-\lambda s}\left(\left(\alpha\coth(\alpha(T - t - s)) + \lambda\right)\ x - \frac{z\alpha}{\sinh(\alpha(T - t - s))} - \lambda A \right)\mathbb{1}\left(x\leq c(t - s)\right)$ is locally bounded on $C_1^t \cup C_2^t$.
-%			
-%			Thereby, we can use \citet{d2020discounted}[Lemma A2] to obtain the following change-of-variable formula, which is missing the local time term because of the continuity of $F_x$ on $[0, T)\times\mathbb{R}$:
-%			\begin{align}
-%			e^{-\lambda s}&V^c(t + s,\ X_{t + s})\nonumber\\
-%			&= V^c(t, x) - \int_{t}^{t + s}e^{-\lambda(u - t)}\left(\left(\alpha\coth(\alpha(T - u)) + \lambda\right)\ X_{u} - \frac{z\alpha}{\sinh(\alpha(T - u))} - \lambda A \right)\mathbb{1}\left(X_{u}\leq b(u)\right)\,\mathrm{d}u + M_{s}^{(1)}, \label{eq:V^c_changed}
-%			\end{align}
-%			with $M_{s}^{(1)} = \int_{t}^{t + s}e^{-\lambda (u - t)}\sigma \partial_xV^{c}(u, X_{u})\,\mathrm{d}B_{u}$. Notice that $(M_{s}^{(1)})_{s = 0}^{T - t}$ is a martingale under $\mathbb{P}_{t, x}$.
-%			
-%			% Ito's formula for G
-%			
-%			In the same way, we can apply \citet{d2020discounted}[Lemma A2], using now the function $F(s, x) = e^{-\lambda s}G(X_{t + s})$, and taking $C = \{(s, x) \in [0, T - t)\times\mathbb{R} : x > A\}$ and $D^{\circ} = \{(s, x) \in [0, T - t)\times\mathbb{R} :$ $ x < A\}$, thereby getting
-%			\begin{align}\label{eq:G_changed}
-%			e^{-\lambda s}G(X_{t+s}) &= G(x) - \int_{t}^{t + s}e^{-\lambda(u - t)}\left(\left(\alpha\coth(\alpha(T - u)) + \lambda\right)\ X_{u} - \frac{z\alpha}{\sinh(\alpha(T - u))} - \lambda A \right)\mathbb{1}\left(X_{u}\leq A\right)\,\mathrm{d}u \\
-%			&\ \ \ - M_{s}^{(2)} + \frac{1}{2}\int_t^{t + s}e^{-\lambda (u - t)}\mathbbm{1}(X_u = S)\,\mathrm{d}l_s^S(X), \nonumber
-%			\end{align}
-%			where $M_{s}^{(2)} = \sigma\int_{t}^{t + s}e^{-\lambda (u - t)}\mathbbm{1}(X_u < S)\,\mathrm{d}B_{u}$ is a martingale under $\mathbb{P}_{t, x}$, and $l_s^S(X)$ is the local time of $X$ at $A$ up to time $s$.
-%			
-%			% V^c = G on C_2!!
-%			
-%			Consider the following stopping time,
-%			\begin{align}\label{eq:stopping_rho}
-%			\rho_c := \inf\left\{0 \leq s\leq T - t: X_{t + s} \geq c(t + s)\right\}.
-%			\end{align}
-%			Fix $(t, x)$ such that $x \leq c(t)$. As assuming $c(t) < A$ for all $t \in (0, T)$, we can ensure, for  that $\mathbbm{1}(X_{t + s} \leq c(t + s)) = \mathbbm{1}(X_{t + s} \leq A) = 1$ for all $s \in [0, \rho_c)$, as well as $\int_t^{t + s}e^{-\lambda (u - t)}\mathbbm{1}(X_u = A)\,\mathrm{d}l_s^A(X) = 0$. Recall that $V^{c}(t, c(t)) = G(c(t))$ for all $t\in[0,T)$ since $c$ solves \eqref{eq:free-boundary_equation}. Moreover, $V^c(T, z) = G(z)$. Hence, $V^c(t + \rho_{c}, X_{t + \rho_c}) = G(X_{t + \rho_c})$. Therefore, we are able now to derive the following relation from Equations \eqref{eq:V^c_changed} and \eqref{eq:G_changed}, for $(t, x)\in [0, T]\times (-\infty, A)$,
-%			\begin{align*}
-%			V^c(t, x) &= \mathbb{E}_{t, x}[e^{-\lambda \rho_c}V^c(t + \rho_c,\ X_{t + \rho_c})] \\
-%			& \hspace{0.4cm} + \mathbb{E}_{t, x}\left[\int_{t}^{t + \rho_c}e^{-\lambda(u - t)}\left(\left(\alpha\coth(\alpha(T - u)) + \lambda\right)\ X_{u} - \frac{z\alpha}{\sinh(\alpha(T - u))} - \lambda A \right)\mathbb{1}\left(X_{u}\leq c(u)\right)\,\mathrm{d}u\right] \\
-%			&= \mathbb{E}_{t, x}\left[e^{-\lambda\rho_c}G(X_{t + \rho_c})\right] \\
-%			&\hspace{0.4cm}  + \mathbb{E}_{t, x}\left[\int_{t}^{t + \rho_c}e^{-\lambda(u - t)}\left(\left(\alpha\coth(\alpha(T - u)) + \lambda\right)\ X_{u} - \frac{z\alpha}{\sinh(\alpha(T - u))} - \lambda A \right)\mathbb{1}\left(X_{u}\leq A\right)\,\mathrm{d}u\right] \\
-%			& = G(x).
-%			\end{align*}
-%			Therefore, we have just proved that $V^{c} = G$ on $C_{2}$.
-%			
-%			% V^c <= V !!
-%			
-%			Now, define the stopping time
-%			\begin{align*}
-%			\tau_{c} := \inf\{0\leq s\leq T-t: X_{t + s} \leq c(t + s)\}
-%			\end{align*}
-%			and plug-in it into \eqref{eq:V^c_changed} to obtain the expression
-%			\begin{align*}
-%			V^c(t, x) &= e^{-\lambda \tau_c}V^c(t + \tau_c,\ X_{t + \tau_c}) \\
-%			&\ \ \ + \int_{t}^{t + \tau_c}e^{-\lambda(u - t)}\left(\left(\alpha\coth(\alpha(T - u)) + \lambda\right)\ X_{u} - \frac{z\alpha}{\sinh(\alpha(T - u))} - \lambda A \right)\mathbb{1}\left(X_{u}\leq A\right)\,\mathrm{d}u - M_{\tau_c}^{(1)}.
-%			\end{align*}
-%			
-%			Notice that, due to the definition of $\tau_{c}$, $\mathbbm{1}(X_{t+u} \leq c(t+u)) = 0$ for all $0\leq u < \tau_{c}$ whenever $\tau_c > 0$ (the case $\tau_c = 0$ is trivial). Therefore, the following formula comes after taking $\mathbb{P}_{t, x}$-expectation in the above equation and considering that $V^c = G$ on $C_2$:
-%			\begin{align*}
-%			V^{c}(t,x) = \mathbb{E}_{t, x}[e^{-\lambda\tau_c}V^{c}(t+\tau_{c}, X_{t + \tau_{c}})] = \mathbb{E}_{t,x}\left[e^{-\lambda\tau_c}G(X_{t+\tau_{c}})\right],
-%			\end{align*} 
-%			for all $(t,x)\in[0,T)\times\mathbb{R}$. Recalling the definition of $V$ from \eqref{eq:OSP}, the above equality leads to
-%			\begin{align}\label{eq:V^c<V}
-%			V^{c}(t,x)\leq V(t,x),
-%			\end{align}
-%			for all $(t,x)\in[0,T)\times\mathbb{R}$.
-%			
-%			% b <= c !!
-%			
-%			Take $(t, x)\in C_{2}$ satisfying $x < \min\{b(t), c(t)\}$, and consider the stopping time $\rho_{b}$ defined as
-%			$$
-%			\rho_b := \inf\left\{0 \leq s\leq T - t: X_{t + s} \geq b(t + s)\right\}.
-%			$$
-%			
-%			Since $V = G$ on $D$, the following equality holds due to \eqref{eq:pricing_formula} and after noticing that $\mathbbm{1}(X_{t + u} \leq b(t + u)) = 1$ for all $0\leq u < \rho_b$,
-%			\begin{align*}
-%			&\mathbb{E}_{t, x}[e^{-\lambda\rho_b}V(t + \rho_b, X_{t + \rho_b})] \\
-%			&= G(x) -  \mathbb{E}_{t, x}\left[\int_{t}^{t + \rho_b}e^{-\lambda(u - t)}\left(\left(\alpha\coth(\alpha(T - u)) + \lambda\right)\ X_{u} - \frac{z\alpha}{\sinh(\alpha(T - u))} - \lambda A \right)\,\mathrm{d}u\right].
-%			\end{align*}
-%			
-%			On the other hand, we get the next equation after substituting $s$ for $\rho_b$ at \eqref{eq:V^c_changed}  and recalling that $V = G$ on $C_2$,
-%			\begin{align*}
-%			&\mathbb{E}_{t, x}[e^{-\lambda\rho_b}V(t+ \rho_b, X_{t + \rho_b})] 
-%			\\
-%			&= G(x) - \mathbb{E}_{t, x}\left[\int_{t}^{t + \rho_{c}}e^{-\lambda(u - t)}\left(\left(\alpha\coth(\alpha(T - u)) + \lambda\right)\ X_{u} - \frac{z\alpha}{\sinh(\alpha(T - u))} - \lambda A \right)\mathbb{1}\left(X_{u}\leq c(u)\right)\,\mathrm{d}u\right].
-%			\end{align*}
-%			Therefore, we can use \eqref{eq:V^c<V} to merge the two previous equalities into
-%			\begin{align*}
-%			\mathbb{E}_{t,x}&\left[\int_{t}^{t + \rho_b}e^{-\lambda(u - t)}\left(\left(\alpha\coth(\alpha(T - u)) + \lambda\right)\ X_{u} - \frac{z\alpha}{\sinh(\alpha(T - u))} - \lambda A \right)\mathbb{1}\left(X_{u}\leq c(u)\right)\,\mathrm{d}u\right]\\
-%			&\geq \mathbb{E}_{t, x}\left[\int_{t}^{t + \rho_b}e^{-\lambda(u - t)}\left(\left(\alpha\coth(\alpha(T - u)) + \lambda\right)\ X_{u} - \frac{z\alpha}{\sinh(\alpha(T - u))} - \lambda A \right)\,\mathrm{d}u\right],
-%			\end{align*}
-%			meaning that $b(t) \leq c(t)$ for all $t\in[0,T]$ since $c$ is continuous. 
-%			
-%			% b = c !!!!!  At last!
-%			
-%			Suppose there exists a point $t\in(0, T)$ such that $b(t) < c(t)$ and fix $x\in(b(t), c(t))$. Consider the stopping time 
-%			\begin{align*}
-%			\tau_{b} := \inf\{0\leq u\leq T-t: X_{t + u} \leq b(t + u)\},
-%			\end{align*}
-%			plug-in it into both \eqref{eq:pricing_formula} and \eqref{eq:V^c_changed} replacing $s$, and then  take $\mathbb{P}_{t,x}$-expectation to obtain
-%			\begin{align*}
-%			&\mathbb{E}_{t, x}[e^{-\lambda \tau_b}V^c(t + \tau_b, X_{t + \tau_b})] \\ 
-%			&= \mathbb{E}_{t, x}[e^{-\lambda \tau_b}G(X_{t + \tau_b})] \\
-%			&= V^c(t, x) - \mathbb{E}_{t, x}\left[\int_{t}^{t + \tau_b}e^{-\lambda(u - t)}\left(\left(\alpha\coth(\alpha(T - u)) + \lambda\right)\ X_{u} - \frac{z\alpha}{\sinh(\alpha(T - u))} - \lambda A \right)\mathbb{1}\left(X_{u}\leq c(u)\right)\,\mathrm{d}u\right]
-%			\end{align*}
-%			and
-%			\begin{align*}
-%			\mathbb{E}_{t, x}&[e^{-\lambda \tau_b}V(t + \tau_b, X_{t + \tau_b})] = \mathbb{E}_{t, x}[e^{-\lambda \tau_b}G(X_{t + \tau_b})] = V(t, x).
-%			\end{align*} 
-%			Thus, from \eqref{eq:V^c<V}, we get
-%			\begin{align*}
-%			\mathbb{E}_{t, x}\left[\int_{t}^{t + \tau_b}e^{-\lambda(u - t)}\left(\left(\alpha\coth(\alpha(T - u)) + \lambda\right)\ X_{u} - \frac{z\alpha}{\sinh(\alpha(T - u))} - \lambda A \right)\mathbb{1}\left(X_{u}\leq c(u)\right)\,\mathrm{d}u\right] \leq 0.
-%			\end{align*}
-%			
-%			Using the fact that $x > b(t)$ and the time-continuity of the process $X$, we can state that $\tau_b > 0$. Therefore, the previous inequality can only happen if $\mathbbm{1}(X_{s} \leq c(s)) = 0$ for all $t\leq s\leq t + \tau_b$, meaning that $b(s) \geq c(s)$ for all $t\leq s\leq t + \tau_b$, which contradicts the assumption $b(t) < c(t)$.
+		
+		% Initializations and x -> V^c(t,x) is twice continuously differentiable
+		
+		Assume we have a function $c:[0,T]\rightarrow \mathbb{R}$ that solves \eqref{eq:free-boundary_equation_general} and define $V^c$ as in \eqref{eq:pricing_formula_general} but with $b$ replaced by $c$. It turns out that \red{the integrand in \eqref{eq:pricing_formula_general} is twice continuously differentiable} with respect to $x$, and therefore we can obtain $\partial_x V^c$ and $\partial_{xx} V^c$, and guarantee their continuity on $[0, T]\times R$, by differentiating inside the integral symbol.
+		
+		% Infinitesimal of X acting on V^c
+		
+		%			It is easy to check that $\partial_t V^c(t, x) + \mathbb{L}V^c(t, x) = \lambda V^c(t, x) - \left(\left(\alpha\coth(\alpha(T - u)) + \lambda\right)\ x - \frac{z\alpha}{\sinh(\alpha(T - t))} - \lambda A \right)\mathbb{1}\left(x\leq c(t)\right)$, which, alongside the fact that $V^c$, $\partial_x V^c$ and $\partial_{xx} V^c$ are continuous on $[0, T]\times \R$, we get the continuity of $\partial_t V^c$ on $C_1 \cup C_2$, where
+		%			\begin{align*}
+		%			C_{1} := \{(t,x) \in [0,T) \times \mathbb{R} : x > c(t)\},\ \ 
+		%			C_{2} := \{(t,x) \in [0,T) \times \mathbb{R} : x < c(t)\}.
+		%			\end{align*}
+		%			
+		%			% Itô's Formula for F
+		%			
+		%			Define the function $F^{(t)}(s, x) := e^{-\lambda s}V^{c}(t + s, x)$ with $s\in[0, T-t)$, $x\in\mathbb{R}$, and consider %the sets
+		%			\begin{align*}
+		%			C_{1}^t := \{(s,x) \in C_1 : t \leq s < T \},\ \ 
+		%			C_{2}^t := \{(s,x) \in C_2 : t \leq s < T \}.
+		%			\end{align*}
+		%			
+		%			Notice that $F^{(t)}$ satisfies the hypothesis of \citet{d2020discounted}[Lemma A2] with $C = C_1^t$ and $D^{\circ} = C_2^t$: $F^{(t)}$, $\partial_xF^{(t)}$, and $\partial_{x^2}F^{(t)}$ are continuous on $[0, T)\R$; it has been proved that $F^{(t)}$ is $\mathcal{C}^{1,2}$ on $C_1^t$ and $C_2^t$; we are assuming that $c$ is a continuous function of bounded variation; and $(\partial_tF^{(t)} + \mathbb{L}_X F^{(t)})(s, x) = -e^{-\lambda s}\left(\left(\alpha\coth(\alpha(T - t - s)) + \lambda\right)\ x - \frac{z\alpha}{\sinh(\alpha(T - t - s))} - \lambda A \right)\mathbb{1}\left(x\leq c(t - s)\right)$ is locally bounded on $C_1^t \cup C_2^t$.
+		%			
+		%			Thereby, we can use \citet{d2020discounted}[Lemma A2] to obtain the following change-of-variable formula, which is missing the local time term because of the continuity of $F_x$ on $[0, T)\times\mathbb{R}$:
+		%			\begin{align}
+		%			e^{-\lambda s}&V^c(t + s,\ X_{t + s})\nonumber\\
+		%			&= V^c(t, x) - \int_{t}^{t + s}e^{-\lambda(u - t)}\left(\left(\alpha\coth(\alpha(T - u)) + \lambda\right)\ X_{u} - \frac{z\alpha}{\sinh(\alpha(T - u))} - \lambda A \right)\mathbb{1}\left(X_{u}\leq b(u)\right)\,\mathrm{d}u + M_{s}^{(1)}, \label{eq:V^c_changed}
+		%			\end{align}
+		%			with $M_{s}^{(1)} = \int_{t}^{t + s}e^{-\lambda (u - t)}\sigma \partial_xV^{c}(u, X_{u})\,\mathrm{d}B_{u}$. Notice that $(M_{s}^{(1)})_{s = 0}^{T - t}$ is a martingale under $\mathbb{P}_{t, x}$.
+		%			
+		%			% Ito's formula for G
+		%			
+		%			In the same way, we can apply \citet{d2020discounted}[Lemma A2], using now the function $F(s, x) = e^{-\lambda s}G(X_{t + s})$, and taking $C = \{(s, x) \in [0, T - t)\times\mathbb{R} : x > A\}$ and $D^{\circ} = \{(s, x) \in [0, T - t)\times\mathbb{R} :$ $ x < A\}$, thereby getting
+		%			\begin{align}\label{eq:G_changed}
+		%			e^{-\lambda s}G(X_{t+s}) &= G(x) - \int_{t}^{t + s}e^{-\lambda(u - t)}\left(\left(\alpha\coth(\alpha(T - u)) + \lambda\right)\ X_{u} - \frac{z\alpha}{\sinh(\alpha(T - u))} - \lambda A \right)\mathbb{1}\left(X_{u}\leq A\right)\,\mathrm{d}u \\
+		%			&\ \ \ - M_{s}^{(2)} + \frac{1}{2}\int_t^{t + s}e^{-\lambda (u - t)}\mathbbm{1}(X_u = S)\,\mathrm{d}l_s^S(X), \nonumber
+		%			\end{align}
+		%			where $M_{s}^{(2)} = \sigma\int_{t}^{t + s}e^{-\lambda (u - t)}\mathbbm{1}(X_u < S)\,\mathrm{d}B_{u}$ is a martingale under $\mathbb{P}_{t, x}$, and $l_s^S(X)$ is the local time of $X$ at $A$ up to time $s$.
+		%			
+		%			% V^c = G on C_2!!
+		%			
+		%			Consider the following stopping time,
+		%			\begin{align}\label{eq:stopping_rho}
+		%			\rho_c := \inf\left\{0 \leq s\leq T - t: X_{t + s} \geq c(t + s)\right\}.
+		%			\end{align}
+		%			Fix $(t, x)$ such that $x \leq c(t)$. As assuming $c(t) < A$ for all $t \in (0, T)$, we can ensure, for  that $\mathbbm{1}(X_{t + s} \leq c(t + s)) = \mathbbm{1}(X_{t + s} \leq A) = 1$ for all $s \in [0, \rho_c)$, as well as $\int_t^{t + s}e^{-\lambda (u - t)}\mathbbm{1}(X_u = A)\,\mathrm{d}l_s^A(X) = 0$. Recall that $V^{c}(t, c(t)) = G(c(t))$ for all $t\in[0,T)$ since $c$ solves \eqref{eq:free-boundary_equation}. Moreover, $V^c(T, z) = G(z)$. Hence, $V^c(t + \rho_{c}, X_{t + \rho_c}) = G(X_{t + \rho_c})$. Therefore, we are able now to derive the following relation from Equations \eqref{eq:V^c_changed} and \eqref{eq:G_changed}, for $(t, x)\in [0, T]\times (-\infty, A)$,
+		%			\begin{align*}
+		%			V^c(t, x) &= \mathbb{E}_{t, x}[e^{-\lambda \rho_c}V^c(t + \rho_c,\ X_{t + \rho_c})] \\
+		%			& \hspace{0.4cm} + \mathbb{E}_{t, x}\left[\int_{t}^{t + \rho_c}e^{-\lambda(u - t)}\left(\left(\alpha\coth(\alpha(T - u)) + \lambda\right)\ X_{u} - \frac{z\alpha}{\sinh(\alpha(T - u))} - \lambda A \right)\mathbb{1}\left(X_{u}\leq c(u)\right)\,\mathrm{d}u\right] \\
+		%			&= \mathbb{E}_{t, x}\left[e^{-\lambda\rho_c}G(X_{t + \rho_c})\right] \\
+		%			&\hspace{0.4cm}  + \mathbb{E}_{t, x}\left[\int_{t}^{t + \rho_c}e^{-\lambda(u - t)}\left(\left(\alpha\coth(\alpha(T - u)) + \lambda\right)\ X_{u} - \frac{z\alpha}{\sinh(\alpha(T - u))} - \lambda A \right)\mathbb{1}\left(X_{u}\leq A\right)\,\mathrm{d}u\right] \\
+		%			& = G(x).
+		%			\end{align*}
+		%			Therefore, we have just proved that $V^{c} = G$ on $C_{2}$.
+		%			
+		%			% V^c <= V !!
+		%			
+		%			Now, define the stopping time
+		%			\begin{align*}
+		%			\tau_{c} := \inf\{0\leq s\leq T-t: X_{t + s} \leq c(t + s)\}
+		%			\end{align*}
+		%			and plug-in it into \eqref{eq:V^c_changed} to obtain the expression
+		%			\begin{align*}
+		%			V^c(t, x) &= e^{-\lambda \tau_c}V^c(t + \tau_c,\ X_{t + \tau_c}) \\
+		%			&\ \ \ + \int_{t}^{t + \tau_c}e^{-\lambda(u - t)}\left(\left(\alpha\coth(\alpha(T - u)) + \lambda\right)\ X_{u} - \frac{z\alpha}{\sinh(\alpha(T - u))} - \lambda A \right)\mathbb{1}\left(X_{u}\leq A\right)\,\mathrm{d}u - M_{\tau_c}^{(1)}.
+		%			\end{align*}
+		%			
+		%			Notice that, due to the definition of $\tau_{c}$, $\mathbbm{1}(X_{t+u} \leq c(t+u)) = 0$ for all $0\leq u < \tau_{c}$ whenever $\tau_c > 0$ (the case $\tau_c = 0$ is trivial). Therefore, the following formula comes after taking $\mathbb{P}_{t, x}$-expectation in the above equation and considering that $V^c = G$ on $C_2$:
+		%			\begin{align*}
+		%			V^{c}(t,x) = \mathbb{E}_{t, x}[e^{-\lambda\tau_c}V^{c}(t+\tau_{c}, X_{t + \tau_{c}})] = \mathbb{E}_{t,x}\left[e^{-\lambda\tau_c}G(X_{t+\tau_{c}})\right],
+		%			\end{align*} 
+		%			for all $(t,x)\in[0,T)\times\mathbb{R}$. Recalling the definition of $V$ from \eqref{eq:OSP}, the above equality leads to
+		%			\begin{align}\label{eq:V^c<V}
+		%			V^{c}(t,x)\leq V(t,x),
+		%			\end{align}
+		%			for all $(t,x)\in[0,T)\times\mathbb{R}$.
+		%			
+		%			% b <= c !!
+		%			
+		%			Take $(t, x)\in C_{2}$ satisfying $x < \min\{b(t), c(t)\}$, and consider the stopping time $\rho_{b}$ defined as
+		%			$$
+		%			\rho_b := \inf\left\{0 \leq s\leq T - t: X_{t + s} \geq b(t + s)\right\}.
+		%			$$
+		%			
+		%			Since $V = G$ on $D$, the following equality holds due to \eqref{eq:pricing_formula} and after noticing that $\mathbbm{1}(X_{t + u} \leq b(t + u)) = 1$ for all $0\leq u < \rho_b$,
+		%			\begin{align*}
+		%			&\mathbb{E}_{t, x}[e^{-\lambda\rho_b}V(t + \rho_b, X_{t + \rho_b})] \\
+		%			&= G(x) -  \mathbb{E}_{t, x}\left[\int_{t}^{t + \rho_b}e^{-\lambda(u - t)}\left(\left(\alpha\coth(\alpha(T - u)) + \lambda\right)\ X_{u} - \frac{z\alpha}{\sinh(\alpha(T - u))} - \lambda A \right)\,\mathrm{d}u\right].
+		%			\end{align*}
+		%			
+		%			On the other hand, we get the next equation after substituting $s$ for $\rho_b$ at \eqref{eq:V^c_changed}  and recalling that $V = G$ on $C_2$,
+		%			\begin{align*}
+		%			&\mathbb{E}_{t, x}[e^{-\lambda\rho_b}V(t+ \rho_b, X_{t + \rho_b})] 
+		%			\\
+		%			&= G(x) - \mathbb{E}_{t, x}\left[\int_{t}^{t + \rho_{c}}e^{-\lambda(u - t)}\left(\left(\alpha\coth(\alpha(T - u)) + \lambda\right)\ X_{u} - \frac{z\alpha}{\sinh(\alpha(T - u))} - \lambda A \right)\mathbb{1}\left(X_{u}\leq c(u)\right)\,\mathrm{d}u\right].
+		%			\end{align*}
+		%			Therefore, we can use \eqref{eq:V^c<V} to merge the two previous equalities into
+		%			\begin{align*}
+		%			\mathbb{E}_{t,x}&\left[\int_{t}^{t + \rho_b}e^{-\lambda(u - t)}\left(\left(\alpha\coth(\alpha(T - u)) + \lambda\right)\ X_{u} - \frac{z\alpha}{\sinh(\alpha(T - u))} - \lambda A \right)\mathbb{1}\left(X_{u}\leq c(u)\right)\,\mathrm{d}u\right]\\
+		%			&\geq \mathbb{E}_{t, x}\left[\int_{t}^{t + \rho_b}e^{-\lambda(u - t)}\left(\left(\alpha\coth(\alpha(T - u)) + \lambda\right)\ X_{u} - \frac{z\alpha}{\sinh(\alpha(T - u))} - \lambda A \right)\,\mathrm{d}u\right],
+		%			\end{align*}
+		%			meaning that $b(t) \leq c(t)$ for all $t\in[0,T]$ since $c$ is continuous. 
+		%			
+		%			% b = c !!!!!  At last!
+		%			
+		%			Suppose there exists a point $t\in(0, T)$ such that $b(t) < c(t)$ and fix $x\in(b(t), c(t))$. Consider the stopping time 
+		%			\begin{align*}
+		%			\tau_{b} := \inf\{0\leq u\leq T-t: X_{t + u} \leq b(t + u)\},
+		%			\end{align*}
+		%			plug-in it into both \eqref{eq:pricing_formula} and \eqref{eq:V^c_changed} replacing $s$, and then  take $\mathbb{P}_{t,x}$-expectation to obtain
+		%			\begin{align*}
+		%			&\mathbb{E}_{t, x}[e^{-\lambda \tau_b}V^c(t + \tau_b, X_{t + \tau_b})] \\ 
+		%			&= \mathbb{E}_{t, x}[e^{-\lambda \tau_b}G(X_{t + \tau_b})] \\
+		%			&= V^c(t, x) - \mathbb{E}_{t, x}\left[\int_{t}^{t + \tau_b}e^{-\lambda(u - t)}\left(\left(\alpha\coth(\alpha(T - u)) + \lambda\right)\ X_{u} - \frac{z\alpha}{\sinh(\alpha(T - u))} - \lambda A \right)\mathbb{1}\left(X_{u}\leq c(u)\right)\,\mathrm{d}u\right]
+		%			\end{align*}
+		%			and
+		%			\begin{align*}
+		%			\mathbb{E}_{t, x}&[e^{-\lambda \tau_b}V(t + \tau_b, X_{t + \tau_b})] = \mathbb{E}_{t, x}[e^{-\lambda \tau_b}G(X_{t + \tau_b})] = V(t, x).
+		%			\end{align*} 
+		%			Thus, from \eqref{eq:V^c<V}, we get
+		%			\begin{align*}
+		%			\mathbb{E}_{t, x}\left[\int_{t}^{t + \tau_b}e^{-\lambda(u - t)}\left(\left(\alpha\coth(\alpha(T - u)) + \lambda\right)\ X_{u} - \frac{z\alpha}{\sinh(\alpha(T - u))} - \lambda A \right)\mathbb{1}\left(X_{u}\leq c(u)\right)\,\mathrm{d}u\right] \leq 0.
+		%			\end{align*}
+		%			
+		%			Using the fact that $x > b(t)$ and the time-continuity of the process $X$, we can state that $\tau_b > 0$. Therefore, the previous inequality can only happen if $\mathbbm{1}(X_{s} \leq c(s)) = 0$ for all $t\leq s\leq t + \tau_b$, meaning that $b(s) \geq c(s)$ for all $t\leq s\leq t + \tau_b$, which contradicts the assumption $b(t) < c(t)$.
 	\end{pf}
 	
 	
@@ -902,12 +909,12 @@
 	
 	
 	
-
 	
 	
-\newpage
-
-\bibliography{AmOpOUB}
-\bibliographystyle{apalike}
-
+	
+	\newpage
+	
+	\bibliography{AmOpOUB}
+	\bibliographystyle{apalike}
+	
 \end{document}
